@@ -1,0 +1,9 @@
+模型名称,综合能力系数 (CCC),能力层级 (Tier)
+GLM-4.5,83.7,S-Tier
+GPT-OSS-120B,81.1,S-Tier
+Kimi K2,69.8,A-Tier
+GPT-OSS-20B,68.2,A-Tier
+Qwen3-32B,52.2,B-Tier
+DeepSeek-R1-0528-Qwen3-8B,44.9,B-Tier
+Mistral Small 3.2,35.9,C-Tier
+Qwen3-8B,20.2,C-Tier

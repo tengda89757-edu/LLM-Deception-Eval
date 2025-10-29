@@ -1,0 +1,9 @@
+模型名称,LMSYS Arena Elo,Artificial Analysis 智能指数,MMLU-Pro (%),GPQA (%),AIME (%),SWE-Bench (%)
+GLM-4.5,1410.0,67.7 (估),84.6,79.1,91.0 (AIME24),64.2
+GPT-OSS-120B,1355.0,,90,80.9 (带工具),"97.9 (AIME25, 带工具)",62.4
+Kimi K2,1421.0,,81.1,75.1,49.5 (AIME25),65.8 (Agentic)
+GPT-OSS-20B,1330.0,45,85.3 (MMLU),71.5 (无工具),"98.7 (AIME25, 带工具)",
+Qwen3-32B,1346.0,,~82.2 (量化版),,,
+Mistral Small 3.2,1355.0,29,,,,
+DeepSeek-R1-0528-Qwen3-8B,,35,,49.1,86.0 (AIME24),
+Qwen3-8B,,23,64.0 (无推理),45.0 (无推理),24.3,
