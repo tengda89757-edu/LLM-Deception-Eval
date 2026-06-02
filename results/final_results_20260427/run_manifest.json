@@ -1,0 +1,153 @@
+{
+  "schema_version": "tacl_revision_run_manifest_v2",
+  "created_at_utc": "2026-04-27T07:08:26.620332+00:00",
+  "run_dir": "<workspace_root>/outputs/runs/tacl_revision_gate_iv_20260417_ai_completed",
+  "analysis_rows_jsonl": "<workspace_root>/outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/analysis_rows.jsonl",
+  "analysis_rows_csv": "<workspace_root>/outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/analysis_rows.csv",
+  "checkpoint_db": "<workspace_root>/outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/checkpoints.sqlite",
+  "iv_design": "gate_only_v1",
+  "iv_arms": [
+    "standard_gate",
+    "safety_short_gate",
+    "safety_policy_gate"
+  ],
+  "iv_randomization_seed": "20260417_gate_only_v1",
+  "iv_assignment_rule": "sha256(f'{GATE_IV_SEED}|{row_id}') first 16 hex modulo 3",
+  "model_roster": [
+    {
+      "family": "glm46",
+      "model_slug": "zai-org/GLM-4.6",
+      "provider": "siliconflow"
+    },
+    {
+      "family": "gptoss120b",
+      "model_slug": "openai/gpt-oss-120b",
+      "provider": "openrouter"
+    },
+    {
+      "family": "kimik2",
+      "model_slug": "moonshotai/Kimi-K2-Instruct-0905",
+      "provider": "siliconflow"
+    },
+    {
+      "family": "gptoss20b",
+      "model_slug": "openai/gpt-oss-20b",
+      "provider": "openrouter"
+    },
+    {
+      "family": "qwen32b",
+      "model_slug": "Qwen/Qwen3-32B",
+      "provider": "siliconflow"
+    },
+    {
+      "family": "deepseekr1qwen8b",
+      "model_slug": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+      "provider": "siliconflow"
+    },
+    {
+      "family": "mistralsmall32",
+      "model_slug": "mistralai/mistral-small-3.2-24b-instruct",
+      "provider": "openrouter"
+    },
+    {
+      "family": "qwen8b",
+      "model_slug": "Qwen/Qwen3-8B",
+      "provider": "siliconflow"
+    }
+  ],
+  "evidence_branches": [
+    "baseline",
+    "neutral_control",
+    "attacker_nondeceptive",
+    "deception"
+  ],
+  "role_sampling": {
+    "baseline_defender": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 1024
+    },
+    "deception_attacker": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 768
+    },
+    "deception_defender": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 1024
+    },
+    "control_expert": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 768
+    },
+    "control_defender": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 1024
+    },
+    "attacker_nondeceptive_attacker": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 768
+    },
+    "attacker_nondeceptive_defender": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 1024
+    },
+    "judge": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 384
+    }
+  },
+  "default_seed": 20260410,
+  "parser_version": "v2_2026_04_10",
+  "row_count": 2968,
+  "evidence_status": "ready_for_analysis",
+  "evidence_blocking_issues": [],
+  "manual_sources": {
+    "model_capabilities": "<workspace_root>/data/manual/model_capabilities.csv",
+    "scenario_complexity": "<workspace_root>/data/manual/scenario_complexity_annotations.csv"
+  },
+  "source_data": {
+    "joined_rows": "<workspace_root>/data/derived/joined_rows.csv",
+    "scenario_registry": "<workspace_root>/data/derived/scenario_registry.jsonl"
+  },
+  "code_hashes": {
+    "deception_benchmark/runner.py": "00949c4022969970237984ffb3f69891d28eaccde6baeac123ff30576e22029e",
+    "deception_benchmark/checkpoints.py": "60233bcaf84699c097ba530e7f00dbea5ab7f890c4b0cbc84d0733a1c7a54f08",
+    "deception_benchmark/models.py": "da333d628daf418bb85afdef2f4baa52faaeea74cce8970cc93cfba10d0a8c24",
+    "deception_benchmark/derive.py": "4169bc6b621c7e4168ba26f06cfa4d9311da91db447621f577da5e523fdac849",
+    "deception_benchmark/prompts.py": "b6c802627aa93aef4c5a68777e7c3ee621ee3e4041d759d3fcaddf5e0f7bac91",
+    "deception_benchmark/gate_iv.py": "a6fc86c983597e4096e3ba3f551a22b9fe722084b2f54ab47195193b6a8443cc",
+    "scripts/merge_run_outputs.py": "6a507bc88af3cf778d612e989145a3de28caa3cd644009944353cbe61a36db8d"
+  },
+  "prompt_hashes": {
+    "deception_benchmark/prompts.py": "b6c802627aa93aef4c5a68777e7c3ee621ee3e4041d759d3fcaddf5e0f7bac91",
+    "deception_benchmark/gate_iv.py": "a6fc86c983597e4096e3ba3f551a22b9fe722084b2f54ab47195193b6a8443cc"
+  },
+  "git": {
+    "available": false,
+    "head_sha": null,
+    "dirty": null
+  },
+  "cloud_vm_metadata": {
+    "hostname": "appledebijibendiannao.local",
+    "platform": "macOS-15.7.5-arm64-arm-64bit",
+    "python": "3.11.4",
+    "pid": 67120,
+    "cwd": "<workspace_root>",
+    "env": {
+      "DECEPTION_RUN_ID": null,
+      "DECEPTION_OUTPUT_DIR": null,
+      "DECEPTION_IV_DESIGN": null
+    }
+  },
+  "checkpoint_status_counts": {
+    "completed": 37198,
+    "failed": 94
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "canonical_evidence_manifest_v2",
+  "created_at_utc": "2026-04-27T07:08:26.616249+00:00",
+  "workspace_root": "<workspace_root>",
+  "run_dir": "<workspace_root>/outputs/runs/tacl_revision_gate_iv_20260417_ai_completed",
+  "row_count": 2968,
+  "expected_rows": 2968,
+  "complete_required_fields_rows": 2968,
+  "engaged_rows": 506,
+  "refused_rows": 2462,
+  "iv_arm_counts": {
+    "safety_policy_gate": 1013,
+    "safety_short_gate": 962,
+    "standard_gate": 993
+  },
+  "engagement_counts": {
+    "0": 2462,
+    "1": 506
+  },
+  "missing_always_required": {
+    "row_id": 0,
+    "scenario_id": 0,
+    "compact_domain": 0,
+    "attacker_family": 0,
+    "defender_family": 0,
+    "baseline_option_id": 0,
+    "neutral_control_option_id": 0,
+    "control_option_id": 0,
+    "attacker_nondeceptive_option_id": 0,
+    "refusal_label_5way": 0,
+    "engagement_binary": 0,
+    "gate_iv_arm": 0,
+    "gate_decision": 0,
+    "attacker_response_hash": 0,
+    "baseline_defender_response_hash": 0,
+    "control_defender_response_hash": 0,
+    "attacker_nondeceptive_attacker_response_hash": 0,
+    "attacker_nondeceptive_defender_response_hash": 0
+  },
+  "missing_engaged_required": {
+    "deception_option_id": 0,
+    "deception_success_binary": 0,
+    "deception_defender_response_hash": 0
+  },
+  "missing_manual_required": {
+    "attacker_capability_score": 0,
+    "defender_capability_score": 0,
+    "attacker_capability_z": 0,
+    "defender_capability_z": 0,
+    "ScenarioComplexity_z": 0
+  },
+  "blocking_issues": [],
+  "status": "ready_for_analysis"
+}

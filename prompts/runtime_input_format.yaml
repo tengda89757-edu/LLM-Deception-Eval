@@ -1,0 +1,79 @@
+version: v1
+name: deception_benchmark_runtime_input
+description: |
+  Canonical runtime payload contract for one scenario-level experimental unit.
+  All branch templates bind their prompt placeholders from this schema.
+
+record_type: scenario_run_input
+
+required_scenario_fields:
+  - scenario_id
+  - legacy_category
+  - compact_domain
+  - compact_subdomain
+  - topic
+  - context_document
+  - deceptive_goal
+  - decision_options
+  - target_option.index
+  - target_option.text
+
+required_runtime_fields:
+  - run_id
+  - branch
+  - scenario_path
+  - attacker_model
+  - defender_model
+  - evaluator_model
+  - sampling.attacker.temperature
+  - sampling.attacker.max_tokens
+  - sampling.defender.temperature
+  - sampling.defender.max_tokens
+  - sampling.evaluator.temperature
+  - sampling.evaluator.max_tokens
+
+derived_bindings:
+  option_1: decision_options[0]
+  option_2: decision_options[1]
+  option_3: decision_options[2]
+  target_option_index: target_option.index
+  target_option_text: target_option.text
+
+attacker_output_contract:
+  type: text
+  description: persuasive message shown to the defender
+
+defender_output_contract:
+  type: json
+  schema:
+    selected_option_index: integer
+    selected_option_text: string
+    reasoning_summary: string
+
+evaluator_output_contract:
+  type: json
+  schema:
+    defender_selected_option_index: integer
+    defender_selected_option_text: string
+    target_hit: boolean
+    persuasion_present: boolean
+    deception_present: boolean
+    deception_tactics: array[string]
+    confidence: number
+    notes: string
+
+branch_stage_contract:
+  baseline:
+    stages:
+      - defender
+      - evaluator
+  control:
+    stages:
+      - attacker
+      - defender
+      - evaluator
+  deception:
+    stages:
+      - attacker
+      - defender
+      - evaluator

@@ -1,0 +1,96 @@
+{
+  "schema_version": "scenario_complexity_reliability_v1",
+  "created_at_utc": "2026-04-17T08:56:14.529278+00:00",
+  "annotator_a": "<workspace_root>/data/manual/scenario_complexity_annotations_depo.csv",
+  "annotator_b": "<workspace_root>/data/manual/scenario_complexity_annotations_nemo.csv",
+  "output": "<workspace_root>/data/manual/scenario_complexity_annotations.csv",
+  "n_scenarios": 53,
+  "dimension_columns": [
+    "evidence_ambiguity",
+    "causal_entanglement",
+    "option_discriminability",
+    "counterevidence_salience",
+    "deception_plausibility",
+    "ecological_realism"
+  ],
+  "adjudication_rule": "Canonical scores are the mean of the two annotators. Scenario-dimension pairs with absolute difference >= 2.0 are flagged for optional manual adjudication.",
+  "reliability": {
+    "evidence_ambiguity": {
+      "pearson_r": 0.463262,
+      "spearman_r": 0.426597,
+      "mean_abs_diff": 0.716981,
+      "max_abs_diff": 2.0,
+      "exact_agreement_rate": 0.396226,
+      "within_1_rate": 0.886792,
+      "icc_2_1": 0.338422,
+      "icc_2_k": 0.505703
+    },
+    "causal_entanglement": {
+      "pearson_r": 0.687993,
+      "spearman_r": 0.68253,
+      "mean_abs_diff": 0.735849,
+      "max_abs_diff": 2.0,
+      "exact_agreement_rate": 0.320755,
+      "within_1_rate": 0.943396,
+      "icc_2_1": 0.447853,
+      "icc_2_k": 0.618644
+    },
+    "option_discriminability": {
+      "pearson_r": 0.21739,
+      "spearman_r": 0.212587,
+      "mean_abs_diff": 0.226415,
+      "max_abs_diff": 1.0,
+      "exact_agreement_rate": 0.773585,
+      "within_1_rate": 1.0,
+      "icc_2_1": 0.181102,
+      "icc_2_k": 0.306667
+    },
+    "counterevidence_salience": {
+      "pearson_r": 0.373225,
+      "spearman_r": 0.380458,
+      "mean_abs_diff": 0.849057,
+      "max_abs_diff": 2.0,
+      "exact_agreement_rate": 0.264151,
+      "within_1_rate": 0.886792,
+      "icc_2_1": 0.18839,
+      "icc_2_k": 0.317051
+    },
+    "deception_plausibility": {
+      "pearson_r": 0.583999,
+      "spearman_r": 0.519854,
+      "mean_abs_diff": 0.981132,
+      "max_abs_diff": 2.0,
+      "exact_agreement_rate": 0.283019,
+      "within_1_rate": 0.735849,
+      "icc_2_1": 0.203065,
+      "icc_2_k": 0.33758
+    },
+    "ecological_realism": {
+      "pearson_r": 0.272656,
+      "spearman_r": 0.284539,
+      "mean_abs_diff": 0.735849,
+      "max_abs_diff": 3.0,
+      "exact_agreement_rate": 0.358491,
+      "within_1_rate": 0.924528,
+      "icc_2_1": 0.147815,
+      "icc_2_k": 0.257559
+    },
+    "ScenarioComplexity_raw": {
+      "pearson_r": 0.672232,
+      "spearman_r": 0.695387,
+      "mean_abs_diff": 0.625786,
+      "max_abs_diff": 1.333333,
+      "exact_agreement_rate": 0.075472,
+      "within_1_rate": 0.924528,
+      "icc_2_1": 0.288785,
+      "icc_2_k": 0.448151
+    },
+    "canonical_raw_summary": {
+      "mean": 3.372636,
+      "sd_population": 0.366865,
+      "min": 2.5833,
+      "max": 4.25
+    }
+  },
+  "flagged_disagreement_count": 33
+}

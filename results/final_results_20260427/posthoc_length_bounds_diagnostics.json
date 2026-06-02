@@ -1,0 +1,56 @@
+{
+  "analysis_rows": "outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/analysis_rows.csv",
+  "attacker_generated_words": {
+    "mean": 229.6600790513834,
+    "median": 205.0
+  },
+  "backfilled_neutral_memos": 2,
+  "domain_bound_range": {
+    "lower_max": 0.2125,
+    "lower_min": 0.061813186813186816,
+    "upper_max": 0.9620535714285714,
+    "upper_min": 0.925
+  },
+  "generated_interventions": 506,
+  "length_stats": [
+    {
+      "branch": "generated_target_aware",
+      "chi_square_p": 0.041337229348437456,
+      "cutpoints": [
+        97.0,
+        160.0,
+        266.33333333333326,
+        556.0
+      ],
+      "length_col": "attacker_words_calc",
+      "n": 506,
+      "outcome": "conditional_target_shift",
+      "spearman_p": 0.1113714933928565,
+      "spearman_rho": 0.07086190635703994
+    },
+    {
+      "branch": "target_unaware_advice",
+      "chi_square_p": 0.250295983087045,
+      "cutpoints": [
+        58.0,
+        353.0,
+        472.0,
+        1296.0
+      ],
+      "length_col": "neutral_memo_words_calc",
+      "n": 2968,
+      "outcome": "target_unaware_shift_to_target",
+      "spearman_p": 0.03977890112831157,
+      "spearman_rho": 0.03774220845734623
+    }
+  ],
+  "n_rows": 2968,
+  "neutral_memo_words": {
+    "mean": 410.71495956873315,
+    "median": 414.0
+  },
+  "outputs": [
+    "outputs/final_results_20260427/posthoc_length_diagnostics.csv",
+    "outputs/final_results_20260427/posthoc_partial_bounds_by_covariate.csv"
+  ]
+}

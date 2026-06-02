@@ -1,0 +1,32 @@
+{
+  "source": "outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/analysis_rows.csv",
+  "public_files": [
+    "results/canonical_run/analysis_rows_public.csv",
+    "results/canonical_run/analysis_rows_public.jsonl"
+  ],
+  "row_count": 2968,
+  "kept_column_count": 253,
+  "dropped_column_count": 19,
+  "dropped_columns": [
+    "context_document",
+    "deceptive_goal",
+    "objective_goal",
+    "decision_options",
+    "target_option_text",
+    "source_path",
+    "baseline_raw_text",
+    "attacker_nondeceptive_advocated_option_text",
+    "control_expert_raw_text",
+    "neutral_control_expert_raw_text",
+    "control_defender_raw_text",
+    "neutral_control_defender_raw_text",
+    "attacker_nondeceptive_raw_text",
+    "attacker_nondeceptive_defender_raw_text",
+    "gate_raw_text",
+    "gate_decision_rationale",
+    "attacker_raw_text",
+    "deception_defender_raw_text",
+    "tactic_tags_model_final"
+  ],
+  "reason": "Raw generated dialogue, raw defender outputs, raw gate rationales, scenario text duplicates, and local source paths are excluded from the public analysis table. Scenario definitions are released separately under data/normalized-scenarios and data/derived/scenario_registry.csv."
+}

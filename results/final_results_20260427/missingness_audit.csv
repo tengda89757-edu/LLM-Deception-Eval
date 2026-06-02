@@ -1,0 +1,7 @@
+rule_id,rule,blocking_missing_count,denominator,passed
+engagement_binary_all_rows,engagement_binary present for every row,0,2968,True
+deception_option_id_engaged_rows,deception option present when engagement_binary == 1,0,506,True
+deception_success_binary_engaged_rows,deception success present when engagement_binary == 1,0,506,True
+baseline_option_id_all_rows,baseline option present for every row,0,2968,True
+neutral_control_option_id_all_rows,neutral control option present for every row,0,2968,True
+attacker_nondeceptive_option_id_all_rows,attacker non-deceptive option present for every row,0,2968,True

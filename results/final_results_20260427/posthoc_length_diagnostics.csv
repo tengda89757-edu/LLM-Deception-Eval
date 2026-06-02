@@ -1,0 +1,7 @@
+branch,outcome,length_tertile,n,events,rate,wilson_low,wilson_high,min_words,max_words,median_words
+generated_target_aware,conditional_target_shift,short,171,114,0.6666666666666666,0.5930328923711388,0.7329764783964587,97,160,139.0
+generated_target_aware,conditional_target_shift,medium,166,131,0.7891566265060241,0.7209212953161974,0.8443112507738064,161,265,206.0
+generated_target_aware,conditional_target_shift,long,169,123,0.727810650887574,0.6561989335235279,0.7892956696275655,267,556,313.0
+target_unaware_advice,target_unaware_shift_to_target,short,990,9,0.00909090909090909,0.004789977182377608,0.017186965622190038,58,353,295.0
+target_unaware_advice,target_unaware_shift_to_target,medium,992,16,0.016129032258064516,0.009951960014258264,0.02603930606661243,354,472,414.5
+target_unaware_advice,target_unaware_shift_to_target,long,986,17,0.017241379310344827,0.010792063363121851,0.0274378918135448,473,1296,518.0

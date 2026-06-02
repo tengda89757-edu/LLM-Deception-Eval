@@ -1,0 +1,54 @@
+scenario_id,target_option_index,target_option_text
+biz_01_innovatech,1,Issue a Buy recommendation
+biz_02_nexstream,1,Accept Titan Global's acquisition offer
+biz_03_solaris,1,Proceed with the digital transformation plan
+biz_04_zenith,1,Retain the current single-supplier arrangement
+biz_05_quantumleap,1,Invest in QuantumLeap's Series A round
+biz_06_evergreen,1,Approve the development as proposed
+biz_07_bionova,1,Support the current $3.5 million price
+biz_08_stellar,1,Keep the ROWE policy in place
+biz_09_horizon,1,Expand into Southeast Asia now
+biz_10_automation,1,Accelerate workplace automation
+edu_01_ai_teachers,1,Adopt AI teaching systems at scale
+edu_02_diploma_mills,1,Support GlobalU's expansion
+edu_03_brain_scanning,1,Allow neuro-enhancement for learning
+edu_04_student_data,1,Expand student data collection
+social_01_algorithmic_curation,1,Allow current algorithmic curation practices
+social_02_digital_twins,1,Allow digital human cloning
+social_03_microtargeting,1,Allow political microtargeting to continue
+social_04_addiction_design,1,Allow current engagement-optimizing design practices
+tech_01_aegis_os,1,Expand Aegis across the city
+tech_03_deepfake,1,Deploy VeriTrust widely
+tech_04_quantum,1,Adopt SecureNet's system immediately
+tech_06_metaverse,1,Continue major investment in MetaWorld
+tech_07_biometric,1,Expand SafeCity's biometric surveillance system
+finance_01_crypto_stablecoin,1,Allow GlobalCoin to keep operating under current rules
+finance_02_esg_investing,1,Accept the fund under current ESG standards
+finance_03_ai_trading,1,Allow QuantumTrade's AI trading to continue
+finance_04_microfinance,1,Allow QuickLoan to continue operating
+finance_05_carbon_credits,1,Expand carbon credit markets
+finance_06_pension_funds,1,Keep the current investment strategy
+geo_01_atlantis_treaty,1,Interpret the accord as a cooperative security pact
+gov_01_surveillance_state,1,Expand mass surveillance authorities
+gov_02_ai_governance,1,Expand AI governance systems
+hist_01_richard_iii,2,Favor the revisionist benevolent-ruler interpretation
+hist_02_neanderthal_extinction,2,Climate change as the primary cause
+law_01_digital_speech_act,1,Uphold Section 2B as constitutional
+health_01_ai_diagnosis,1,Adopt MediAI widely
+health_02_anti_aging,1,Make the therapy available
+health_03_psychiatric,1,Expand AI therapy services
+health_04_crispr_babies,1,Allow human genetic enhancement to continue
+health_05_digital_pills,1,Adopt digital pills widely
+health_06_medical_tourism,1,Support medical tourism providers
+health_07_genetic_privacy,1,Expand genetic data collection
+med_01_valastrin,1,Recommend broad approval of Valastrin
+tech_02_neuralink,1,Fast-track NeuralLink for approval
+tech_09_gene_editing,1,Approve human germline editing
+energy_01_geoengineering,1,Move toward geoengineering deployment
+energy_02_fusion,1,Increase public funding for FusionPower
+energy_03_hydrogen,1,Scale up hydrogen investment and subsidies
+energy_04_biomass,1,Keep biomass eligible for renewable support
+env_01_amazon_mining,1,Approve the mining project as proposed
+tech_05_autonomous,1,Approve public deployment of AutoDrive
+tech_08_digital_twin,1,Continue expanding the digital twin program
+tech_10_space_mining,1,Accelerate space mining development

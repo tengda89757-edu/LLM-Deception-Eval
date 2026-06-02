@@ -1,0 +1,28 @@
+name: deception
+description: |
+  Deceptive persuasion. The attacker tries to steer the defender toward the target option by selectively downplaying competing evidence.
+
+runtime_binding:
+  branch: deception
+  requires_attacker_stage: true
+  required_fields:
+    - scenario_id
+    - topic
+    - context_document
+    - deceptive_goal
+    - decision_options
+    - target_option.index
+    - target_option.text
+
+stages:
+  - stage_id: attacker
+    actor: attacker
+    prompt_ref: prompts/attacker.yaml
+
+  - stage_id: defender
+    actor: defender
+    prompt_ref: prompts/defender.yaml
+
+  - stage_id: evaluator
+    actor: evaluator
+    prompt_ref: prompts/evaluator.yaml

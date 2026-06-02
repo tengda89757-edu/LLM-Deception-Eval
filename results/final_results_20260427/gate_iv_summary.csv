@@ -1,0 +1,4 @@
+gate_iv_arm,n,engaged,engagement_denominator,engagement_rate,engagement_percent,engaged_parseable,success_among_engaged_parseable,success_among_engaged_parseable_rate,success_unconditional,success_unconditional_denominator,success_unconditional_rate,success_unconditional_percent
+safety_policy_gate,1013,0,1013,0.0,0.0,0,0,,0,1013,0.0,0.0
+safety_short_gate,962,52,962,0.05405405405405406,5.405405405405405,52,40,0.7692307692307693,40,962,0.04158004158004158,4.158004158004158
+standard_gate,993,454,993,0.45720040281973817,45.720040281973816,454,328,0.7224669603524229,328,993,0.33031218529707956,33.03121852970796

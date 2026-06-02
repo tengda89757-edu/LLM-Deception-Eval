@@ -1,0 +1,4702 @@
+{
+  "schema_version": "tacl_revision_heckman_reanalysis_v2",
+  "created_at_utc": "2026-04-27T03:04:03.641522+00:00",
+  "analysis_rows": "outputs/runs/tacl_revision_gate_iv_20260417_ai_completed/analysis_rows.jsonl",
+  "diagnostics": {
+    "row_count": 2968,
+    "engaged_rows": 506,
+    "refused_rows": 2462,
+    "outcome_nonmissing": 506,
+    "outcome_distribution_engaged": {
+      "0.0": 138,
+      "1.0": 368
+    },
+    "iv_columns_present": [
+      "gate_iv_safety_short_gate",
+      "gate_iv_safety_policy_gate",
+      "gate_iv_any_safety"
+    ],
+    "iv_arm_counts": {
+      "safety_policy_gate": 1013,
+      "safety_short_gate": 962,
+      "standard_gate": 993
+    },
+    "manual_covariates": {
+      "missing_counts": {
+        "ScenarioComplexity_z": 0,
+        "attacker_capability_z": 0,
+        "defender_capability_z": 0
+      },
+      "missing_any": false,
+      "strict_required": false
+    }
+  },
+  "iv_specs": [
+    {
+      "name": "gate_joint",
+      "iv_columns": [
+        "gate_iv_safety_short_gate",
+        "gate_iv_safety_policy_gate"
+      ],
+      "description": "Safety-short and safety-policy gate arms relative to standard_gate.",
+      "subset_n": 2968
+    },
+    {
+      "name": "gate_any_safety_vs_standard",
+      "iv_columns": [
+        "gate_iv_any_safety"
+      ],
+      "description": "Any safety gate arm relative to standard_gate.",
+      "subset_n": 2968
+    },
+    {
+      "name": "gate_safety_short_vs_standard",
+      "iv_columns": [
+        "gate_iv_safety_short_gate"
+      ],
+      "description": "Safety-short arm relative to standard_gate, excluding safety_policy_gate.",
+      "subset_n": 1955
+    },
+    {
+      "name": "gate_safety_policy_vs_standard",
+      "iv_columns": [
+        "gate_iv_safety_policy_gate"
+      ],
+      "description": "Safety-policy arm relative to standard_gate, excluding safety_short_gate.",
+      "subset_n": 2006
+    }
+  ],
+  "balance_checks": {
+    "compact_domain": {
+      "status": "ok",
+      "test": "chi_square_independence",
+      "n": 2968,
+      "chi2": 11.667013,
+      "pvalue": 0.30796,
+      "cramers_v": 0.044334
+    },
+    "scenario_id": {
+      "status": "ok",
+      "test": "chi_square_independence",
+      "n": 2968,
+      "chi2": 81.73214,
+      "pvalue": 0.947735,
+      "cramers_v": 0.117341
+    },
+    "attacker_family": {
+      "status": "ok",
+      "test": "chi_square_independence",
+      "n": 2968,
+      "chi2": 11.485771,
+      "pvalue": 0.647524,
+      "cramers_v": 0.043988
+    },
+    "defender_family": {
+      "status": "ok",
+      "test": "chi_square_independence",
+      "n": 2968,
+      "chi2": 10.254026,
+      "pvalue": 0.743385,
+      "cramers_v": 0.041562
+    },
+    "target_option_id": {
+      "status": "ok",
+      "test": "chi_square_independence",
+      "n": 2968,
+      "chi2": 0.745437,
+      "pvalue": 0.688859,
+      "cramers_v": 0.015848
+    },
+    "context_document_word_count": {
+      "status": "ok",
+      "test": "one_way_anova_by_gate_arm",
+      "f_stat": 0.155034,
+      "pvalue": 0.856393,
+      "means": {
+        "safety_policy_gate": 129.555775,
+        "safety_short_gate": 130.192308,
+        "standard_gate": 129.70292
+      }
+    },
+    "attacker_capability_z": {
+      "status": "ok",
+      "test": "one_way_anova_by_gate_arm",
+      "f_stat": 0.383337,
+      "pvalue": 0.681617,
+      "means": {
+        "safety_policy_gate": -0.020288,
+        "safety_short_gate": 0.018932,
+        "standard_gate": 0.002355
+      }
+    },
+    "defender_capability_z": {
+      "status": "ok",
+      "test": "one_way_anova_by_gate_arm",
+      "f_stat": 0.604081,
+      "pvalue": 0.546644,
+      "means": {
+        "safety_policy_gate": -0.020221,
+        "safety_short_gate": 0.027978,
+        "standard_gate": -0.006477
+      }
+    },
+    "ScenarioComplexity_z": {
+      "status": "ok",
+      "test": "one_way_anova_by_gate_arm",
+      "f_stat": 0.07481,
+      "pvalue": 0.927922,
+      "means": {
+        "safety_policy_gate": 0.003861,
+        "safety_short_gate": 0.006201,
+        "standard_gate": -0.009918
+      }
+    }
+  },
+  "first_stage": {
+    "gate_joint": {
+      "status": "ok",
+      "model": "probit",
+      "n_obs": 2968,
+      "coefficients": {
+        "const": {
+          "coef": -0.995623,
+          "se": 2284094.355362,
+          "pvalue": 1.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": -2.995986,
+          "se": 0.411121,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_policy_gate": {
+          "coef": -14.26338,
+          "se": 5.28697897091265e+21,
+          "pvalue": 1.0
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.12329,
+          "se": 0.131501,
+          "pvalue": 0.348473
+        },
+        "attacker_capability_z": {
+          "coef": -0.18246,
+          "se": 5646192.395173,
+          "pvalue": 1.0
+        },
+        "defender_capability_z": {
+          "coef": 0.052408,
+          "se": 2158558.882126,
+          "pvalue": 1.0
+        },
+        "context_document_word_count_z": {
+          "coef": 0.290365,
+          "se": 0.153764,
+          "pvalue": 0.058975
+        },
+        "__domain_digital_information_systems": {
+          "coef": -1.243332,
+          "se": 0.375727,
+          "pvalue": 0.000936
+        },
+        "__domain_finance_markets": {
+          "coef": -0.753247,
+          "se": 0.274292,
+          "pvalue": 0.00603
+        },
+        "__domain_governance_law_history": {
+          "coef": 0.003774,
+          "se": 0.581718,
+          "pvalue": 0.994824
+        },
+        "__domain_health_biomedicine": {
+          "coef": -1.548989,
+          "se": 0.344731,
+          "pvalue": 7e-06
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -1.15478,
+          "se": 0.321291,
+          "pvalue": 0.000325
+        },
+        "__attacker_glm46": {
+          "coef": 1.689243,
+          "se": 4231285.602443,
+          "pvalue": 1.0
+        },
+        "__attacker_gptoss120b": {
+          "coef": 0.549038,
+          "se": 7034488.757064,
+          "pvalue": 1.0
+        },
+        "__attacker_gptoss20b": {
+          "coef": 0.434889,
+          "se": null,
+          "pvalue": null
+        },
+        "__attacker_kimik2": {
+          "coef": 1.205759,
+          "se": 5209788.509671,
+          "pvalue": 1.0
+        },
+        "__attacker_mistralsmall32": {
+          "coef": 2.863885,
+          "se": 3906972.346329,
+          "pvalue": 0.999999
+        },
+        "__attacker_qwen32b": {
+          "coef": 4.085641,
+          "se": 5438081.442983,
+          "pvalue": 0.999999
+        },
+        "__attacker_qwen8b": {
+          "coef": 2.448414,
+          "se": 1116263.89166,
+          "pvalue": 0.999998
+        },
+        "__defender_glm46": {
+          "coef": -0.107186,
+          "se": 1012337.570588,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss120b": {
+          "coef": -0.005407,
+          "se": 2887149.851281,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss20b": {
+          "coef": 0.142086,
+          "se": 2962488.327891,
+          "pvalue": 1.0
+        },
+        "__defender_kimik2": {
+          "coef": -0.017334,
+          "se": 1472988.661364,
+          "pvalue": 1.0
+        },
+        "__defender_mistralsmall32": {
+          "coef": 0.088883,
+          "se": 4621137.276757,
+          "pvalue": 1.0
+        },
+        "__defender_qwen32b": {
+          "coef": -0.110787,
+          "se": 668311.392322,
+          "pvalue": 1.0
+        },
+        "__defender_qwen8b": {
+          "coef": 0.19792,
+          "se": null,
+          "pvalue": null
+        }
+      },
+      "llf": -438.522268,
+      "aic": 929.044537,
+      "bic": 1084.93127,
+      "interpretation": "Instrument relevance check: gate-arm coefficients should predict engagement/refusal."
+    },
+    "gate_any_safety_vs_standard": {
+      "status": "ok",
+      "model": "probit",
+      "n_obs": 2968,
+      "coefficients": {
+        "const": {
+          "coef": -0.986933,
+          "se": 766816.703248,
+          "pvalue": 0.999999
+        },
+        "gate_iv_any_safety": {
+          "coef": -3.327063,
+          "se": 0.364284,
+          "pvalue": 0.0
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.122795,
+          "se": 0.113409,
+          "pvalue": 0.278913
+        },
+        "attacker_capability_z": {
+          "coef": -0.168122,
+          "se": 820681.142868,
+          "pvalue": 1.0
+        },
+        "defender_capability_z": {
+          "coef": 0.036232,
+          "se": null,
+          "pvalue": null
+        },
+        "context_document_word_count_z": {
+          "coef": 0.255696,
+          "se": 0.136408,
+          "pvalue": 0.060862
+        },
+        "__domain_digital_information_systems": {
+          "coef": -1.128526,
+          "se": 0.347202,
+          "pvalue": 0.001153
+        },
+        "__domain_finance_markets": {
+          "coef": -0.657653,
+          "se": 0.241585,
+          "pvalue": 0.006484
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.023745,
+          "se": 0.496973,
+          "pvalue": 0.961892
+        },
+        "__domain_health_biomedicine": {
+          "coef": -1.435526,
+          "se": 0.312641,
+          "pvalue": 4e-06
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -1.068927,
+          "se": 0.293522,
+          "pvalue": 0.000271
+        },
+        "__attacker_glm46": {
+          "coef": 1.605364,
+          "se": null,
+          "pvalue": null
+        },
+        "__attacker_gptoss120b": {
+          "coef": 0.536267,
+          "se": 1399154.654096,
+          "pvalue": 1.0
+        },
+        "__attacker_gptoss20b": {
+          "coef": 0.421016,
+          "se": 352871.94683,
+          "pvalue": 0.999999
+        },
+        "__attacker_kimik2": {
+          "coef": 1.161562,
+          "se": 636126.57257,
+          "pvalue": 0.999999
+        },
+        "__attacker_mistralsmall32": {
+          "coef": 2.709355,
+          "se": null,
+          "pvalue": null
+        },
+        "__attacker_qwen32b": {
+          "coef": 3.786118,
+          "se": null,
+          "pvalue": null
+        },
+        "__attacker_qwen8b": {
+          "coef": 2.41819,
+          "se": null,
+          "pvalue": null
+        },
+        "__defender_glm46": {
+          "coef": -0.100795,
+          "se": 1295991.967092,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss120b": {
+          "coef": 0.034274,
+          "se": 2007103.952526,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss20b": {
+          "coef": 0.095576,
+          "se": null,
+          "pvalue": null
+        },
+        "__defender_kimik2": {
+          "coef": -0.044249,
+          "se": 1198156.723286,
+          "pvalue": 1.0
+        },
+        "__defender_mistralsmall32": {
+          "coef": 0.088955,
+          "se": null,
+          "pvalue": null
+        },
+        "__defender_qwen32b": {
+          "coef": -0.118607,
+          "se": 783934.031452,
+          "pvalue": 1.0
+        },
+        "__defender_qwen8b": {
+          "coef": 0.180913,
+          "se": 122898.893819,
+          "pvalue": 0.999999
+        }
+      },
+      "llf": -490.476149,
+      "aic": 1030.952299,
+      "bic": 1180.843389,
+      "interpretation": "Instrument relevance check: gate-arm coefficients should predict engagement/refusal."
+    },
+    "gate_safety_short_vs_standard": {
+      "status": "ok",
+      "model": "probit",
+      "n_obs": 1955,
+      "coefficients": {
+        "const": {
+          "coef": -0.995623,
+          "se": 2466692.219833,
+          "pvalue": 1.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": -2.995986,
+          "se": 0.381467,
+          "pvalue": 0.0
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.12329,
+          "se": 0.130742,
+          "pvalue": 0.34568
+        },
+        "attacker_capability_z": {
+          "coef": -0.18246,
+          "se": 2484165.312706,
+          "pvalue": 1.0
+        },
+        "defender_capability_z": {
+          "coef": 0.052408,
+          "se": 14913161.088346,
+          "pvalue": 1.0
+        },
+        "context_document_word_count_z": {
+          "coef": 0.290365,
+          "se": 0.149158,
+          "pvalue": 0.051572
+        },
+        "__domain_digital_information_systems": {
+          "coef": -1.243332,
+          "se": 0.375023,
+          "pvalue": 0.000915
+        },
+        "__domain_finance_markets": {
+          "coef": -0.753247,
+          "se": 0.279866,
+          "pvalue": 0.007114
+        },
+        "__domain_governance_law_history": {
+          "coef": 0.003774,
+          "se": 0.586706,
+          "pvalue": 0.994868
+        },
+        "__domain_health_biomedicine": {
+          "coef": -1.548989,
+          "se": 0.347156,
+          "pvalue": 8e-06
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -1.15478,
+          "se": 0.322748,
+          "pvalue": 0.000346
+        },
+        "__attacker_glm46": {
+          "coef": 1.689242,
+          "se": 1715399.326955,
+          "pvalue": 0.999999
+        },
+        "__attacker_gptoss120b": {
+          "coef": 0.549038,
+          "se": 3723219.589888,
+          "pvalue": 1.0
+        },
+        "__attacker_gptoss20b": {
+          "coef": 0.434889,
+          "se": 3327284.217819,
+          "pvalue": 1.0
+        },
+        "__attacker_kimik2": {
+          "coef": 1.205759,
+          "se": 2299998.688712,
+          "pvalue": 1.0
+        },
+        "__attacker_mistralsmall32": {
+          "coef": 2.863886,
+          "se": 5164601.647301,
+          "pvalue": 1.0
+        },
+        "__attacker_qwen32b": {
+          "coef": 4.085641,
+          "se": 1890393.43852,
+          "pvalue": 0.999998
+        },
+        "__attacker_qwen8b": {
+          "coef": 2.448415,
+          "se": 268809.520879,
+          "pvalue": 0.999993
+        },
+        "__defender_glm46": {
+          "coef": -0.107187,
+          "se": 8706377.592478,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss120b": {
+          "coef": -0.005407,
+          "se": 8959410.188316,
+          "pvalue": 1.0
+        },
+        "__defender_gptoss20b": {
+          "coef": 0.142086,
+          "se": 23272982.795975,
+          "pvalue": 1.0
+        },
+        "__defender_kimik2": {
+          "coef": -0.017334,
+          "se": 7988188.35353,
+          "pvalue": 1.0
+        },
+        "__defender_mistralsmall32": {
+          "coef": 0.088883,
+          "se": 20742664.044459,
+          "pvalue": 1.0
+        },
+        "__defender_qwen32b": {
+          "coef": -0.110787,
+          "se": 11613001.828314,
+          "pvalue": 1.0
+        },
+        "__defender_qwen8b": {
+          "coef": 0.19792,
+          "se": 2850066.226377,
+          "pvalue": 1.0
+        }
+      },
+      "llf": -438.522268,
+      "aic": 927.044537,
+      "bic": 1066.498173,
+      "interpretation": "Instrument relevance check: gate-arm coefficients should predict engagement/refusal."
+    },
+    "gate_safety_policy_vs_standard": {
+      "status": "error",
+      "reason": "probit failed: Singular matrix",
+      "n_obs": 2006
+    }
+  },
+  "falsification": {
+    "gate_joint": {
+      "baseline_target_binary": {
+        "status": "error",
+        "reason": "logit failed: Singular matrix",
+        "n_obs": 2968
+      },
+      "control_shift_to_target": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -4.568708,
+            "se": 78034799.164717,
+            "pvalue": 1.0
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": 0.042196,
+            "se": 0.876544,
+            "pvalue": 0.961605
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": 0.2841,
+            "se": 0.421981,
+            "pvalue": 0.500787
+          },
+          "ScenarioComplexity_z": {
+            "coef": -0.67781,
+            "se": 0.510583,
+            "pvalue": 0.184336
+          },
+          "attacker_capability_z": {
+            "coef": -0.16035,
+            "se": 92739000.738749,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.699649,
+            "se": 95866965.100924,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 1.011291,
+            "se": 0.43399,
+            "pvalue": 0.019795
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.363154,
+            "se": 1.035713,
+            "pvalue": 0.188124
+          },
+          "__domain_finance_markets": {
+            "coef": -21.888866,
+            "se": 0.770531,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.134052,
+            "se": 0.845717,
+            "pvalue": 0.874058
+          },
+          "__domain_health_biomedicine": {
+            "coef": -2.848359,
+            "se": 1.212661,
+            "pvalue": 0.018832
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -25.245453,
+            "se": 0.834238,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 0.913107,
+            "se": 103202616.116935,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.197755,
+            "se": 143815165.637588,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.553869,
+            "se": 114623879.333061,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": -1.558215,
+            "se": 83654128.08198,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 0.520953,
+            "se": 332338463.549356,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.15338,
+            "se": 92952634.647498,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.130454,
+            "se": 15598644.647287,
+            "pvalue": 1.0
+          },
+          "__defender_glm46": {
+            "coef": 1.029125,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": 0.124182,
+            "se": 104382447.649378,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.423521,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -0.623726,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.489173,
+            "se": 248195639.32521,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.456439,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 0.870706,
+            "se": 15043733.429802,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -157.389984,
+        "aic": 366.779968,
+        "bic": 522.666702
+      },
+      "engaged_direct_effect_on_success": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 4.146814,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -0.157396,
+            "se": 0.576891,
+            "pvalue": 0.78498
+          },
+          "mtd_z": {
+            "coef": 3.673751,
+            "se": null,
+            "pvalue": null
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.580856,
+            "se": 0.215756,
+            "pvalue": 0.007098
+          },
+          "attacker_capability_z": {
+            "coef": 0.057257,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": -1.003281,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": -0.344741,
+            "se": 0.193891,
+            "pvalue": 0.075401
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.564469,
+            "se": 0.425709,
+            "pvalue": 0.000238
+          },
+          "__domain_finance_markets": {
+            "coef": -0.537928,
+            "se": 0.726148,
+            "pvalue": 0.458816
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.021967,
+            "se": 0.621251,
+            "pvalue": 0.971793
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.00289,
+            "se": 0.490073,
+            "pvalue": 0.040716
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.380619,
+            "se": 0.480288,
+            "pvalue": 0.428081
+          },
+          "__attacker_glm46": {
+            "coef": 0.141439,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": -2.054519,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 1.16692,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": 0.481501,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -1.359055,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.967585,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.670355,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 0.377661,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": -2.394016,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": -1.290293,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -1.811798,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": -3.061836,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.609952,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 0.708582,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -199.053916,
+        "aic": 450.107833,
+        "bic": 559.843177
+      }
+    },
+    "gate_any_safety_vs_standard": {
+      "baseline_target_binary": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -4.617708,
+            "se": 23201580.70265,
+            "pvalue": 1.0
+          },
+          "gate_iv_any_safety": {
+            "coef": 0.13019,
+            "se": 3.951774,
+            "pvalue": 0.973719
+          },
+          "ScenarioComplexity_z": {
+            "coef": -0.918176,
+            "se": 0.419181,
+            "pvalue": 0.028495
+          },
+          "attacker_capability_z": {
+            "coef": 0.139202,
+            "se": 183783954.713459,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": -6.136155,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": 0.77656,
+            "se": 0.333559,
+            "pvalue": 0.019907
+          },
+          "__domain_digital_information_systems": {
+            "coef": -3.955026,
+            "se": 1.380412,
+            "pvalue": 0.004169
+          },
+          "__domain_finance_markets": {
+            "coef": -34.512504,
+            "se": 0.895775,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.268074,
+            "se": 0.850783,
+            "pvalue": 0.752692
+          },
+          "__domain_health_biomedicine": {
+            "coef": -2.568969,
+            "se": 1.150682,
+            "pvalue": 0.025578
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -30.5802,
+            "se": 0.832877,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": -0.700166,
+            "se": 95276469.983559,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.11253,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": -0.357841,
+            "se": 143209792.557588,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 0.078586,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 0.244736,
+            "se": 440933196.22373,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": 0.103985,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": 0.589421,
+            "se": 23813020.870988,
+            "pvalue": 1.0
+          },
+          "__defender_glm46": {
+            "coef": 1.878532,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": 7.122593,
+            "se": 137120102.767371,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 5.076873,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -26.144022,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": -11.547321,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -49.090747,
+            "se": 47134506.9367,
+            "pvalue": 0.999999
+          },
+          "__defender_qwen8b": {
+            "coef": -23.243574,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -121.246353,
+        "aic": 292.492706,
+        "bic": 442.383796
+      },
+      "control_shift_to_target": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -4.535676,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_any_safety": {
+            "coef": 0.166892,
+            "se": 0.407887,
+            "pvalue": 0.68242
+          },
+          "ScenarioComplexity_z": {
+            "coef": -0.675039,
+            "se": 0.512636,
+            "pvalue": 0.187906
+          },
+          "attacker_capability_z": {
+            "coef": -0.163694,
+            "se": 18988009.869698,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.697509,
+            "se": 12628658.433631,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 1.007162,
+            "se": 0.431376,
+            "pvalue": 0.019555
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.368886,
+            "se": 1.04312,
+            "pvalue": 0.189419
+          },
+          "__domain_finance_markets": {
+            "coef": -22.242407,
+            "se": 0.767771,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.135722,
+            "se": 0.83854,
+            "pvalue": 0.87142
+          },
+          "__domain_health_biomedicine": {
+            "coef": -2.851969,
+            "se": 1.218647,
+            "pvalue": 0.01927
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -11.846791,
+            "se": 0.839099,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 0.907532,
+            "se": 5792352.916538,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.201006,
+            "se": 12377169.19463,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.536724,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": -1.574782,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 0.501211,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.156623,
+            "se": 4165241.556529,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.174049,
+            "se": 779885.373116,
+            "pvalue": 1.0
+          },
+          "__defender_glm46": {
+            "coef": 1.015256,
+            "se": 10084304.797201,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": 0.113876,
+            "se": 28432285.854046,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.423092,
+            "se": 40481451.28511,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -0.647285,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.467624,
+            "se": 98206890.054203,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.455869,
+            "se": 11884319.626922,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.836454,
+            "se": 4257458.386008,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -157.570941,
+        "aic": 365.141881,
+        "bic": 515.032971
+      },
+      "engaged_direct_effect_on_success": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 4.146814,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_any_safety": {
+            "coef": -0.157396,
+            "se": 0.576891,
+            "pvalue": 0.78498
+          },
+          "mtd_z": {
+            "coef": 3.673751,
+            "se": null,
+            "pvalue": null
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.580856,
+            "se": 0.215756,
+            "pvalue": 0.007098
+          },
+          "attacker_capability_z": {
+            "coef": 0.057257,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": -1.003281,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": -0.344741,
+            "se": 0.193891,
+            "pvalue": 0.075401
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.564469,
+            "se": 0.425709,
+            "pvalue": 0.000238
+          },
+          "__domain_finance_markets": {
+            "coef": -0.537928,
+            "se": 0.726148,
+            "pvalue": 0.458816
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.021967,
+            "se": 0.621251,
+            "pvalue": 0.971793
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.00289,
+            "se": 0.490073,
+            "pvalue": 0.040716
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.380619,
+            "se": 0.480288,
+            "pvalue": 0.428081
+          },
+          "__attacker_glm46": {
+            "coef": 0.141439,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": -2.054519,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 1.16692,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": 0.481501,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -1.359055,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.967585,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.670355,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 0.377661,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": -2.394016,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": -1.290293,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -1.811798,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": -3.061836,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.609952,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 0.708582,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -199.053916,
+        "aic": 450.107833,
+        "bic": 559.843177
+      }
+    },
+    "gate_safety_short_vs_standard": {
+      "baseline_target_binary": {
+        "status": "error",
+        "reason": "logit failed: Singular matrix",
+        "n_obs": 1955
+      },
+      "control_shift_to_target": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 1955,
+        "coefficients": {
+          "const": {
+            "coef": -6.095845,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -0.00299,
+            "se": 0.437023,
+            "pvalue": 0.99454
+          },
+          "ScenarioComplexity_z": {
+            "coef": -0.669021,
+            "se": 0.486666,
+            "pvalue": 0.169224
+          },
+          "attacker_capability_z": {
+            "coef": -2.023184,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": 0.733348,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": 0.922731,
+            "se": 0.431082,
+            "pvalue": 0.032315
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.337637,
+            "se": 1.433618,
+            "pvalue": 0.350794
+          },
+          "__domain_finance_markets": {
+            "coef": -25.969396,
+            "se": 0.88786,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.097449,
+            "se": 0.71879,
+            "pvalue": 0.892158
+          },
+          "__domain_health_biomedicine": {
+            "coef": -2.365972,
+            "se": 1.20302,
+            "pvalue": 0.049218
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -18.933596,
+            "se": 0.846334,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 2.966377,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": 2.064709,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 2.920521,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": -23.911162,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -3.009702,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": 1.78428,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": 0.412622,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 1.815274,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": 0.00426,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": 1.150753,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": 0.402188,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": 1.607061,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.288452,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 1.762459,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -98.059096,
+        "aic": 246.118191,
+        "bic": 385.571828
+      },
+      "engaged_direct_effect_on_success": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 4.146814,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -0.157396,
+            "se": 0.576891,
+            "pvalue": 0.78498
+          },
+          "mtd_z": {
+            "coef": 3.673751,
+            "se": null,
+            "pvalue": null
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.580856,
+            "se": 0.215756,
+            "pvalue": 0.007098
+          },
+          "attacker_capability_z": {
+            "coef": 0.057257,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": -1.003281,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": -0.344741,
+            "se": 0.193891,
+            "pvalue": 0.075401
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.564469,
+            "se": 0.425709,
+            "pvalue": 0.000238
+          },
+          "__domain_finance_markets": {
+            "coef": -0.537928,
+            "se": 0.726148,
+            "pvalue": 0.458816
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.021967,
+            "se": 0.621251,
+            "pvalue": 0.971793
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.00289,
+            "se": 0.490073,
+            "pvalue": 0.040716
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.380619,
+            "se": 0.480288,
+            "pvalue": 0.428081
+          },
+          "__attacker_glm46": {
+            "coef": 0.141439,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": -2.054519,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 1.16692,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": 0.481501,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -1.359055,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.967585,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.670355,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 0.377661,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": -2.394016,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": -1.290293,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -1.811798,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": -3.061836,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.609952,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 0.708582,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -199.053916,
+        "aic": 450.107833,
+        "bic": 559.843177
+      }
+    },
+    "gate_safety_policy_vs_standard": {
+      "baseline_target_binary": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 2006,
+        "coefficients": {
+          "const": {
+            "coef": -5.465653,
+            "se": 1043187897164758.1,
+            "pvalue": 1.0
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": 0.179177,
+            "se": 8.368824,
+            "pvalue": 0.982919
+          },
+          "ScenarioComplexity_z": {
+            "coef": -1.080687,
+            "se": 1.581512,
+            "pvalue": 0.494401
+          },
+          "attacker_capability_z": {
+            "coef": 0.264503,
+            "se": 3703047813786727.0,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": -7.422469,
+            "se": 121050590.389567,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 0.813442,
+            "se": 0.742922,
+            "pvalue": 0.27355
+          },
+          "__domain_digital_information_systems": {
+            "coef": -26.802848,
+            "se": 0.76765,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -33.861267,
+            "se": 1.232566,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.114468,
+            "se": 0.835266,
+            "pvalue": 0.890997
+          },
+          "__domain_health_biomedicine": {
+            "coef": -2.250536,
+            "se": 1.46137,
+            "pvalue": 0.123556
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -33.783736,
+            "se": 1.512266,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 0.253155,
+            "se": 2563979891826529.0,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.625761,
+            "se": 4977137437075422.0,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.096929,
+            "se": 3795695722213852.0,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 0.170869,
+            "se": 2915898700508680.0,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 1.274434,
+            "se": 7666802617716486.0,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": 0.442939,
+            "se": 2262335198670547.5,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen8b": {
+            "coef": 1.160068,
+            "se": 502741155260121.3,
+            "pvalue": 1.0
+          },
+          "__defender_glm46": {
+            "coef": -39.642609,
+            "se": 85535557.6675,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": 8.723706,
+            "se": 185893524.433789,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 6.645164,
+            "se": 123450468.1229,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -27.636062,
+            "se": 95008937.222283,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": -14.325253,
+            "se": 137360403.406484,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -18.687333,
+            "se": 32595189.978474,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": -25.550687,
+            "se": 16544926.334293,
+            "pvalue": 0.999999
+          }
+        },
+        "llf": -78.892049,
+        "aic": 207.784099,
+        "bic": 347.881548
+      },
+      "control_shift_to_target": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 2006,
+        "coefficients": {
+          "const": {
+            "coef": -4.699681,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": 0.287729,
+            "se": 0.712189,
+            "pvalue": 0.686208
+          },
+          "ScenarioComplexity_z": {
+            "coef": -0.782537,
+            "se": 0.530269,
+            "pvalue": 0.140015
+          },
+          "attacker_capability_z": {
+            "coef": -0.050303,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": 0.560491,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": 1.130225,
+            "se": 0.447389,
+            "pvalue": 0.011528
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.328861,
+            "se": 1.070432,
+            "pvalue": 0.214449
+          },
+          "__domain_finance_markets": {
+            "coef": -25.56894,
+            "se": 0.863291,
+            "pvalue": 0.0
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.079503,
+            "se": 0.883969,
+            "pvalue": 0.928336
+          },
+          "__domain_health_biomedicine": {
+            "coef": -42.047609,
+            "se": 0.837163,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -25.722726,
+            "se": 0.953928,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.287811,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.124366,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.718017,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": -1.008872,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 1.030606,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": 0.131442,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.096733,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 0.560544,
+            "se": 23971743.477617,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": 0.108025,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.533852,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -0.769112,
+            "se": 13105380.812172,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.343533,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.797967,
+            "se": 47988869.235342,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.291632,
+            "se": 10171925.236914,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -102.226812,
+        "aic": 254.453625,
+        "bic": 394.551074
+      },
+      "engaged_direct_effect_on_success": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 451,
+        "coefficients": {
+          "const": {
+            "coef": 3.986548,
+            "se": null,
+            "pvalue": null
+          },
+          "mtd_z": {
+            "coef": 3.440198,
+            "se": 198.077927,
+            "pvalue": 0.986143
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.593137,
+            "se": 0.212214,
+            "pvalue": 0.00519
+          },
+          "attacker_capability_z": {
+            "coef": 0.076054,
+            "se": null,
+            "pvalue": null
+          },
+          "defender_capability_z": {
+            "coef": -0.962279,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": -0.31864,
+            "se": 0.200389,
+            "pvalue": 0.11181
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.458743,
+            "se": 0.484486,
+            "pvalue": 0.002605
+          },
+          "__domain_finance_markets": {
+            "coef": -0.288343,
+            "se": 0.647048,
+            "pvalue": 0.655866
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.071571,
+            "se": 0.573274,
+            "pvalue": 0.900645
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.989693,
+            "se": 0.51957,
+            "pvalue": 0.056802
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.32544,
+            "se": 0.520337,
+            "pvalue": 0.531682
+          },
+          "__attacker_glm46": {
+            "coef": 0.109446,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": -2.055948,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss20b": {
+            "coef": 1.138164,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_kimik2": {
+            "coef": 0.421927,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -1.365781,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.894248,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.783637,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": 0.611211,
+            "se": 17943534.897636,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": -2.28715,
+            "se": 74180354.932555,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -1.236099,
+            "se": 47117573.70368,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -1.750514,
+            "se": 35612889.811949,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": -2.82044,
+            "se": 106284431.175951,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.479732,
+            "se": 33708351.051962,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.657569,
+            "se": 6596108.764383,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -180.663507,
+        "aic": 409.327014,
+        "bic": 508.00223
+      }
+    }
+  },
+  "style_contamination": {
+    "attacker_style_len_words": {
+      "status": "ok",
+      "model": "style_contamination_attacker_style_len_words",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 346.571885,
+          "se": 28.273325,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 22.842308,
+          "se": 10.160471,
+          "pvalue": 0.028832
+        },
+        "ScenarioComplexity_z": {
+          "coef": -1.948915,
+          "se": 2.774657,
+          "pvalue": 0.485563
+        },
+        "attacker_capability_z": {
+          "coef": 17.501485,
+          "se": 10.180241,
+          "pvalue": 0.091533
+        },
+        "defender_capability_z": {
+          "coef": -12.484626,
+          "se": 1.621504,
+          "pvalue": 0.0
+        },
+        "context_document_word_count_z": {
+          "coef": 7.382537,
+          "se": 2.412798,
+          "pvalue": 0.003499
+        },
+        "__domain_digital_information_systems": {
+          "coef": -13.527658,
+          "se": 8.018235,
+          "pvalue": 0.097573
+        },
+        "__domain_finance_markets": {
+          "coef": -18.560192,
+          "se": 6.035461,
+          "pvalue": 0.003349
+        },
+        "__domain_governance_law_history": {
+          "coef": -1.468472,
+          "se": 6.523544,
+          "pvalue": 0.822781
+        },
+        "__domain_health_biomedicine": {
+          "coef": -4.357744,
+          "se": 6.092355,
+          "pvalue": 0.477635
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -15.404717,
+          "se": 5.514213,
+          "pvalue": 0.007279
+        },
+        "__attacker_glm46": {
+          "coef": -65.501921,
+          "se": 27.325613,
+          "pvalue": 0.020154
+        },
+        "__attacker_gptoss120b": {
+          "coef": 131.792456,
+          "se": 30.246733,
+          "pvalue": 6.2e-05
+        },
+        "__attacker_gptoss20b": {
+          "coef": 139.226008,
+          "se": 26.512518,
+          "pvalue": 3e-06
+        },
+        "__attacker_kimik2": {
+          "coef": -118.997227,
+          "se": 26.807405,
+          "pvalue": 4.7e-05
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -11.668921,
+          "se": 50.249565,
+          "pvalue": 0.817279
+        },
+        "__attacker_qwen32b": {
+          "coef": -187.809722,
+          "se": 26.678888,
+          "pvalue": 0.0
+        },
+        "__attacker_qwen8b": {
+          "coef": -183.582345,
+          "se": 31.196406,
+          "pvalue": 0.0
+        },
+        "__defender_glm46": {
+          "coef": 11.481326,
+          "se": 7.791959,
+          "pvalue": 0.146649
+        },
+        "__defender_gptoss120b": {
+          "coef": 11.377819,
+          "se": 4.780113,
+          "pvalue": 0.021002
+        },
+        "__defender_gptoss20b": {
+          "coef": 4.646243,
+          "se": 5.9944,
+          "pvalue": 0.441793
+        },
+        "__defender_kimik2": {
+          "coef": 7.460308,
+          "se": 6.105358,
+          "pvalue": 0.227245
+        },
+        "__defender_mistralsmall32": {
+          "coef": -25.461157,
+          "se": 8.733711,
+          "pvalue": 0.005232
+        },
+        "__defender_qwen32b": {
+          "coef": -2.586448,
+          "se": 6.592221,
+          "pvalue": 0.696404
+        },
+        "__defender_qwen8b": {
+          "coef": -0.990752,
+          "se": 7.127877,
+          "pvalue": 0.88999
+        }
+      },
+      "llf": -2620.300043,
+      "aic": 5286.600087,
+      "bic": 5383.81043,
+      "r2": 0.822471
+    },
+    "attacker_style_len_sentences": {
+      "status": "ok",
+      "model": "style_contamination_attacker_style_len_sentences",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 19.509703,
+          "se": 1.573601,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 0.66464,
+          "se": 0.353222,
+          "pvalue": 0.065486
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.02442,
+          "se": 0.189427,
+          "pvalue": 0.897922
+        },
+        "attacker_capability_z": {
+          "coef": 1.345352,
+          "se": 0.579459,
+          "pvalue": 0.024199
+        },
+        "defender_capability_z": {
+          "coef": -0.594872,
+          "se": 0.107045,
+          "pvalue": 1e-06
+        },
+        "context_document_word_count_z": {
+          "coef": 0.234095,
+          "se": 0.174384,
+          "pvalue": 0.185294
+        },
+        "__domain_digital_information_systems": {
+          "coef": -0.430365,
+          "se": 0.441843,
+          "pvalue": 0.334554
+        },
+        "__domain_finance_markets": {
+          "coef": -1.592056,
+          "se": 0.435996,
+          "pvalue": 0.000606
+        },
+        "__domain_governance_law_history": {
+          "coef": -1.371257,
+          "se": 0.560635,
+          "pvalue": 0.017869
+        },
+        "__domain_health_biomedicine": {
+          "coef": -0.197544,
+          "se": 0.491208,
+          "pvalue": 0.689215
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -1.138633,
+          "se": 0.533244,
+          "pvalue": 0.037468
+        },
+        "__attacker_glm46": {
+          "coef": -3.514126,
+          "se": 1.728228,
+          "pvalue": 0.047133
+        },
+        "__attacker_gptoss120b": {
+          "coef": 7.49748,
+          "se": 1.695898,
+          "pvalue": 5e-05
+        },
+        "__attacker_gptoss20b": {
+          "coef": 9.507685,
+          "se": 1.568842,
+          "pvalue": 0.0
+        },
+        "__attacker_kimik2": {
+          "coef": -9.592326,
+          "se": 1.511106,
+          "pvalue": 0.0
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -1.490717,
+          "se": 2.770288,
+          "pvalue": 0.592798
+        },
+        "__attacker_qwen32b": {
+          "coef": -12.599047,
+          "se": 1.453463,
+          "pvalue": 0.0
+        },
+        "__attacker_qwen8b": {
+          "coef": -11.903845,
+          "se": 1.770836,
+          "pvalue": 0.0
+        },
+        "__defender_glm46": {
+          "coef": 0.533807,
+          "se": 0.378919,
+          "pvalue": 0.164858
+        },
+        "__defender_gptoss120b": {
+          "coef": 0.088383,
+          "se": 0.320713,
+          "pvalue": 0.783961
+        },
+        "__defender_gptoss20b": {
+          "coef": 0.459811,
+          "se": 0.351383,
+          "pvalue": 0.196433
+        },
+        "__defender_kimik2": {
+          "coef": 0.325541,
+          "se": 0.289834,
+          "pvalue": 0.266512
+        },
+        "__defender_mistralsmall32": {
+          "coef": -1.694797,
+          "se": 0.517809,
+          "pvalue": 0.001895
+        },
+        "__defender_qwen32b": {
+          "coef": 0.242858,
+          "se": 0.445618,
+          "pvalue": 0.588089
+        },
+        "__defender_qwen8b": {
+          "coef": -0.20535,
+          "se": 0.5318,
+          "pvalue": 0.700968
+        }
+      },
+      "llf": -1205.949026,
+      "aic": 2457.898052,
+      "bic": 2555.108396,
+      "r2": 0.832486
+    },
+    "attacker_style_hedging_markers": {
+      "status": "ok",
+      "model": "style_contamination_attacker_style_hedging_markers",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 1.576793,
+          "se": 0.243461,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 0.32831,
+          "se": 0.19318,
+          "pvalue": 0.0952
+        },
+        "ScenarioComplexity_z": {
+          "coef": -0.049868,
+          "se": 0.091968,
+          "pvalue": 0.589977
+        },
+        "attacker_capability_z": {
+          "coef": -0.478239,
+          "se": 0.135783,
+          "pvalue": 0.000901
+        },
+        "defender_capability_z": {
+          "coef": -0.049531,
+          "se": 0.036111,
+          "pvalue": 0.176062
+        },
+        "context_document_word_count_z": {
+          "coef": 0.074952,
+          "se": 0.093982,
+          "pvalue": 0.428778
+        },
+        "__domain_digital_information_systems": {
+          "coef": -0.437443,
+          "se": 0.265821,
+          "pvalue": 0.105871
+        },
+        "__domain_finance_markets": {
+          "coef": -0.430693,
+          "se": 0.207061,
+          "pvalue": 0.042468
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.206752,
+          "se": 0.262132,
+          "pvalue": 0.433848
+        },
+        "__domain_health_biomedicine": {
+          "coef": -0.370248,
+          "se": 0.254702,
+          "pvalue": 0.152052
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -0.276121,
+          "se": 0.25623,
+          "pvalue": 0.286173
+        },
+        "__attacker_glm46": {
+          "coef": -1.110599,
+          "se": 0.147425,
+          "pvalue": 0.0
+        },
+        "__attacker_gptoss120b": {
+          "coef": -0.246883,
+          "se": 0.392195,
+          "pvalue": 0.531784
+        },
+        "__attacker_gptoss20b": {
+          "coef": -0.055802,
+          "se": 0.597208,
+          "pvalue": 0.925915
+        },
+        "__attacker_kimik2": {
+          "coef": -1.19486,
+          "se": 0.152499,
+          "pvalue": 0.0
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -1.188117,
+          "se": 0.428203,
+          "pvalue": 0.007659
+        },
+        "__attacker_qwen32b": {
+          "coef": -0.824983,
+          "se": 0.210933,
+          "pvalue": 0.000268
+        },
+        "__attacker_qwen8b": {
+          "coef": -0.802596,
+          "se": 0.318279,
+          "pvalue": 0.014782
+        },
+        "__defender_glm46": {
+          "coef": 0.287984,
+          "se": 0.161764,
+          "pvalue": 0.080875
+        },
+        "__defender_gptoss120b": {
+          "coef": 0.087392,
+          "se": 0.078616,
+          "pvalue": 0.271413
+        },
+        "__defender_gptoss20b": {
+          "coef": -0.020622,
+          "se": 0.131436,
+          "pvalue": 0.875931
+        },
+        "__defender_kimik2": {
+          "coef": 0.066753,
+          "se": 0.095342,
+          "pvalue": 0.486963
+        },
+        "__defender_mistralsmall32": {
+          "coef": 0.000666,
+          "se": 0.157405,
+          "pvalue": 0.99664
+        },
+        "__defender_qwen32b": {
+          "coef": 0.078152,
+          "se": 0.151795,
+          "pvalue": 0.608839
+        },
+        "__defender_qwen8b": {
+          "coef": -0.000131,
+          "se": 0.127593,
+          "pvalue": 0.999184
+        }
+      },
+      "llf": -671.359222,
+      "aic": 1388.718444,
+      "bic": 1485.928787,
+      "r2": 0.224277
+    },
+    "attacker_style_aggressive_markers": {
+      "status": "ok",
+      "model": "style_contamination_attacker_style_aggressive_markers",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 0.564479,
+          "se": 0.17417,
+          "pvalue": 0.002081
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 0.029847,
+          "se": 0.049437,
+          "pvalue": 0.548648
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.028564,
+          "se": 0.043064,
+          "pvalue": 0.510082
+        },
+        "attacker_capability_z": {
+          "coef": -0.106502,
+          "se": 0.049645,
+          "pvalue": 0.036624
+        },
+        "defender_capability_z": {
+          "coef": -0.004692,
+          "se": 0.02456,
+          "pvalue": 0.849237
+        },
+        "context_document_word_count_z": {
+          "coef": 0.036849,
+          "se": 0.051412,
+          "pvalue": 0.476739
+        },
+        "__domain_digital_information_systems": {
+          "coef": 0.101097,
+          "se": 0.084182,
+          "pvalue": 0.235222
+        },
+        "__domain_finance_markets": {
+          "coef": 0.114101,
+          "se": 0.104815,
+          "pvalue": 0.281352
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.197784,
+          "se": 0.116857,
+          "pvalue": 0.096529
+        },
+        "__domain_health_biomedicine": {
+          "coef": 0.327743,
+          "se": 0.145625,
+          "pvalue": 0.028666
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": 0.402378,
+          "se": 0.180036,
+          "pvalue": 0.029739
+        },
+        "__attacker_glm46": {
+          "coef": 0.427991,
+          "se": 0.167042,
+          "pvalue": 0.013338
+        },
+        "__attacker_gptoss120b": {
+          "coef": -0.366931,
+          "se": 0.159616,
+          "pvalue": 0.025564
+        },
+        "__attacker_gptoss20b": {
+          "coef": -0.300026,
+          "se": 0.16736,
+          "pvalue": 0.078838
+        },
+        "__attacker_kimik2": {
+          "coef": -0.513711,
+          "se": 0.154407,
+          "pvalue": 0.001617
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -0.607776,
+          "se": 0.269774,
+          "pvalue": 0.02851
+        },
+        "__attacker_qwen32b": {
+          "coef": -0.619399,
+          "se": 0.146752,
+          "pvalue": 9.8e-05
+        },
+        "__attacker_qwen8b": {
+          "coef": -0.600127,
+          "se": 0.182459,
+          "pvalue": 0.001807
+        },
+        "__defender_glm46": {
+          "coef": 0.02828,
+          "se": 0.083108,
+          "pvalue": 0.735014
+        },
+        "__defender_gptoss120b": {
+          "coef": 0.05826,
+          "se": 0.0789,
+          "pvalue": 0.463589
+        },
+        "__defender_gptoss20b": {
+          "coef": 0.032717,
+          "se": 0.08073,
+          "pvalue": 0.686945
+        },
+        "__defender_kimik2": {
+          "coef": 0.122909,
+          "se": 0.064365,
+          "pvalue": 0.061712
+        },
+        "__defender_mistralsmall32": {
+          "coef": 0.054405,
+          "se": 0.099649,
+          "pvalue": 0.587424
+        },
+        "__defender_qwen32b": {
+          "coef": 0.097129,
+          "se": 0.101219,
+          "pvalue": 0.341703
+        },
+        "__defender_qwen8b": {
+          "coef": 0.151557,
+          "se": 0.101345,
+          "pvalue": 0.140841
+        }
+      },
+      "llf": -412.361459,
+      "aic": 870.722918,
+      "bic": 967.933261,
+      "r2": 0.297423
+    },
+    "attacker_response_len_chars": {
+      "status": "ok",
+      "model": "style_contamination_attacker_response_len_chars",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 2496.053039,
+          "se": 210.769198,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 133.891659,
+          "se": 64.052029,
+          "pvalue": 0.041492
+        },
+        "ScenarioComplexity_z": {
+          "coef": -30.050433,
+          "se": 17.879416,
+          "pvalue": 0.098814
+        },
+        "attacker_capability_z": {
+          "coef": 97.566213,
+          "se": 69.352062,
+          "pvalue": 0.165428
+        },
+        "defender_capability_z": {
+          "coef": -89.27041,
+          "se": 11.310007,
+          "pvalue": 0.0
+        },
+        "context_document_word_count_z": {
+          "coef": 53.127124,
+          "se": 13.448604,
+          "pvalue": 0.000236
+        },
+        "__domain_digital_information_systems": {
+          "coef": -68.797059,
+          "se": 52.572978,
+          "pvalue": 0.196424
+        },
+        "__domain_finance_markets": {
+          "coef": -68.840629,
+          "se": 39.754907,
+          "pvalue": 0.08927
+        },
+        "__domain_governance_law_history": {
+          "coef": 19.433407,
+          "se": 44.801142,
+          "pvalue": 0.66625
+        },
+        "__domain_health_biomedicine": {
+          "coef": -15.538921,
+          "se": 45.294493,
+          "pvalue": 0.732933
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -61.90118,
+          "se": 35.413973,
+          "pvalue": 0.086379
+        },
+        "__attacker_glm46": {
+          "coef": -633.472945,
+          "se": 199.619963,
+          "pvalue": 0.00253
+        },
+        "__attacker_gptoss120b": {
+          "coef": 820.412119,
+          "se": 202.223721,
+          "pvalue": 0.000167
+        },
+        "__attacker_gptoss20b": {
+          "coef": 970.413428,
+          "se": 202.772838,
+          "pvalue": 1.5e-05
+        },
+        "__attacker_kimik2": {
+          "coef": -1043.713721,
+          "se": 193.046729,
+          "pvalue": 2e-06
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -309.536787,
+          "se": 361.356915,
+          "pvalue": 0.395599
+        },
+        "__attacker_qwen32b": {
+          "coef": -1420.136293,
+          "se": 199.788394,
+          "pvalue": 0.0
+        },
+        "__attacker_qwen8b": {
+          "coef": -1403.682481,
+          "se": 231.242797,
+          "pvalue": 0.0
+        },
+        "__defender_glm46": {
+          "coef": 74.443335,
+          "se": 48.836126,
+          "pvalue": 0.133481
+        },
+        "__defender_gptoss120b": {
+          "coef": 88.533739,
+          "se": 32.782872,
+          "pvalue": 0.00932
+        },
+        "__defender_gptoss20b": {
+          "coef": 34.065436,
+          "se": 39.619353,
+          "pvalue": 0.393836
+        },
+        "__defender_kimik2": {
+          "coef": 54.140659,
+          "se": 38.963836,
+          "pvalue": 0.170599
+        },
+        "__defender_mistralsmall32": {
+          "coef": -183.214864,
+          "se": 54.753042,
+          "pvalue": 0.001527
+        },
+        "__defender_qwen32b": {
+          "coef": -26.413868,
+          "se": 46.002981,
+          "pvalue": 0.568323
+        },
+        "__defender_qwen8b": {
+          "coef": -19.250534,
+          "se": 43.661348,
+          "pvalue": 0.661109
+        }
+      },
+      "llf": -3580.287398,
+      "aic": 7206.574796,
+      "bic": 7303.78514,
+      "r2": 0.833941
+    },
+    "attacker_response_len_tokens": {
+      "status": "ok",
+      "model": "style_contamination_attacker_response_len_tokens",
+      "n_obs": 506,
+      "coefficients": {
+        "const": {
+          "coef": 920.116394,
+          "se": 46.953149,
+          "pvalue": 0.0
+        },
+        "gate_iv_safety_short_gate": {
+          "coef": 25.097039,
+          "se": 11.937094,
+          "pvalue": 0.040374
+        },
+        "ScenarioComplexity_z": {
+          "coef": -3.544707,
+          "se": 3.446207,
+          "pvalue": 0.308437
+        },
+        "attacker_capability_z": {
+          "coef": 30.732827,
+          "se": 14.500362,
+          "pvalue": 0.038846
+        },
+        "defender_capability_z": {
+          "coef": -29.61399,
+          "se": 3.517465,
+          "pvalue": 0.0
+        },
+        "context_document_word_count_z": {
+          "coef": 9.082476,
+          "se": 3.426761,
+          "pvalue": 0.010626
+        },
+        "__domain_digital_information_systems": {
+          "coef": -27.324896,
+          "se": 17.784857,
+          "pvalue": 0.1305
+        },
+        "__domain_finance_markets": {
+          "coef": -27.393215,
+          "se": 7.186562,
+          "pvalue": 0.000367
+        },
+        "__domain_governance_law_history": {
+          "coef": 4.868655,
+          "se": 11.749761,
+          "pvalue": 0.680313
+        },
+        "__domain_health_biomedicine": {
+          "coef": 7.858973,
+          "se": 10.683454,
+          "pvalue": 0.465267
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -15.849614,
+          "se": 7.040446,
+          "pvalue": 0.028624
+        },
+        "__attacker_glm46": {
+          "coef": 933.885829,
+          "se": 52.237901,
+          "pvalue": 0.0
+        },
+        "__attacker_gptoss120b": {
+          "coef": -249.775153,
+          "se": 37.958226,
+          "pvalue": 0.0
+        },
+        "__attacker_gptoss20b": {
+          "coef": -196.226642,
+          "se": 61.093321,
+          "pvalue": 0.002264
+        },
+        "__attacker_kimik2": {
+          "coef": -631.299401,
+          "se": 41.024796,
+          "pvalue": 0.0
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -499.374693,
+          "se": 75.736638,
+          "pvalue": 0.0
+        },
+        "__attacker_qwen32b": {
+          "coef": -746.544549,
+          "se": 42.042471,
+          "pvalue": 0.0
+        },
+        "__attacker_qwen8b": {
+          "coef": -732.601106,
+          "se": 50.809681,
+          "pvalue": 0.0
+        },
+        "__defender_glm46": {
+          "coef": 28.931173,
+          "se": 8.795039,
+          "pvalue": 0.001805
+        },
+        "__defender_gptoss120b": {
+          "coef": 45.128932,
+          "se": 9.035834,
+          "pvalue": 7e-06
+        },
+        "__defender_gptoss20b": {
+          "coef": 34.0875,
+          "se": 8.872128,
+          "pvalue": 0.000333
+        },
+        "__defender_kimik2": {
+          "coef": 21.27022,
+          "se": 14.552593,
+          "pvalue": 0.149865
+        },
+        "__defender_mistralsmall32": {
+          "coef": -46.076036,
+          "se": 14.503828,
+          "pvalue": 0.002505
+        },
+        "__defender_qwen32b": {
+          "coef": 5.104056,
+          "se": 14.533265,
+          "pvalue": 0.726859
+        },
+        "__defender_qwen8b": {
+          "coef": 9.567788,
+          "se": 12.197045,
+          "pvalue": 0.436344
+        }
+      },
+      "llf": -2935.732607,
+      "aic": 5917.465213,
+      "bic": 6014.675557,
+      "r2": 0.976742
+    }
+  },
+  "models": {
+    "naive_engaged_ols": {
+      "status": "ok",
+      "model": "naive_engaged_ols",
+      "n_obs": 503,
+      "coefficients": {
+        "const": {
+          "coef": 1.048074,
+          "se": 0.117709,
+          "pvalue": 0.0
+        },
+        "mtd_z": {
+          "coef": 0.014238,
+          "se": 0.010825,
+          "pvalue": 0.194189
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.072953,
+          "se": 0.025328,
+          "pvalue": 0.005758
+        },
+        "attacker_capability_z": {
+          "coef": -0.021659,
+          "se": 0.03271,
+          "pvalue": 0.510784
+        },
+        "defender_capability_z": {
+          "coef": -0.163987,
+          "se": 0.036606,
+          "pvalue": 4.1e-05
+        },
+        "context_document_word_count_z": {
+          "coef": -0.036229,
+          "se": 0.022642,
+          "pvalue": 0.115631
+        },
+        "__domain_digital_information_systems": {
+          "coef": -0.220699,
+          "se": 0.064943,
+          "pvalue": 0.001308
+        },
+        "__domain_finance_markets": {
+          "coef": -0.068447,
+          "se": 0.090692,
+          "pvalue": 0.453822
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.022012,
+          "se": 0.06716,
+          "pvalue": 0.744412
+        },
+        "__domain_health_biomedicine": {
+          "coef": -0.149353,
+          "se": 0.06934,
+          "pvalue": 0.035903
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -0.038114,
+          "se": 0.062413,
+          "pvalue": 0.544082
+        },
+        "__attacker_glm46": {
+          "coef": 0.023885,
+          "se": 0.105748,
+          "pvalue": 0.822193
+        },
+        "__attacker_gptoss120b": {
+          "coef": -0.234009,
+          "se": 0.12365,
+          "pvalue": 0.063996
+        },
+        "__attacker_gptoss20b": {
+          "coef": 0.110003,
+          "se": 0.078131,
+          "pvalue": 0.165102
+        },
+        "__attacker_kimik2": {
+          "coef": 0.017405,
+          "se": 0.126738,
+          "pvalue": 0.891297
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -0.241507,
+          "se": 0.196944,
+          "pvalue": 0.225619
+        },
+        "__attacker_qwen32b": {
+          "coef": -0.110185,
+          "se": 0.11756,
+          "pvalue": 0.352954
+        },
+        "__attacker_qwen8b": {
+          "coef": -0.09146,
+          "se": 0.143604,
+          "pvalue": 0.526992
+        },
+        "__defender_glm46": {
+          "coef": 0.094418,
+          "se": 0.036024,
+          "pvalue": 0.01147
+        },
+        "__defender_gptoss120b": {
+          "coef": -0.359982,
+          "se": 0.054852,
+          "pvalue": 0.0
+        },
+        "__defender_gptoss20b": {
+          "coef": -0.148911,
+          "se": 0.063255,
+          "pvalue": 0.02238
+        },
+        "__defender_kimik2": {
+          "coef": -0.240298,
+          "se": 0.07899,
+          "pvalue": 0.003677
+        },
+        "__defender_mistralsmall32": {
+          "coef": -0.440848,
+          "se": 0.058023,
+          "pvalue": 0.0
+        },
+        "__defender_qwen32b": {
+          "coef": -0.027174,
+          "se": 0.059691,
+          "pvalue": 0.650825
+        },
+        "__defender_qwen8b": {
+          "coef": 0.033469,
+          "se": 0.058709,
+          "pvalue": 0.571074
+        }
+      },
+      "llf": -204.921133,
+      "aic": 455.842265,
+      "bic": 552.915839,
+      "r2": 0.33572
+    },
+    "heckman_twostep": {
+      "status": "ok",
+      "stage1_selection": {
+        "status": "ok",
+        "model": "probit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -0.995623,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -2.995986,
+            "se": 0.156822,
+            "pvalue": 0.0
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": -14.26338,
+            "se": 50452686829.761795,
+            "pvalue": 1.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.12329,
+            "se": 0.061647,
+            "pvalue": 0.045509
+          },
+          "attacker_capability_z": {
+            "coef": -0.18246,
+            "se": 5968606.80678,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.052408,
+            "se": 2864684.425892,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 0.290365,
+            "se": 0.060718,
+            "pvalue": 2e-06
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.243332,
+            "se": 0.154323,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -0.753247,
+            "se": 0.177538,
+            "pvalue": 2.2e-05
+          },
+          "__domain_governance_law_history": {
+            "coef": 0.003774,
+            "se": 0.162074,
+            "pvalue": 0.981423
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.548989,
+            "se": 0.17128,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -1.15478,
+            "se": 0.16811,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.689243,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.549038,
+            "se": 9283663.261197,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.434889,
+            "se": 4680741.210054,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 1.205759,
+            "se": 2368615.265942,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 2.863885,
+            "se": 14370751.080388,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": 4.085641,
+            "se": 3298806.096153,
+            "pvalue": 0.999999
+          },
+          "__attacker_qwen8b": {
+            "coef": 2.448414,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": -0.107186,
+            "se": 1983499.439859,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.005407,
+            "se": 3850322.442079,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.142086,
+            "se": 2936357.013909,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -0.017334,
+            "se": 2255744.461016,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.088883,
+            "se": 5931052.246637,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.110787,
+            "se": 1750146.564581,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.19792,
+            "se": 388921.458796,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -438.522268,
+        "aic": 929.044537,
+        "bic": 1084.93127
+      },
+      "stage2_outcome": {
+        "status": "ok",
+        "model": "heckman_twostep_outcome",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 1.049709,
+            "se": 0.13441,
+            "pvalue": 0.0
+          },
+          "mtd_z": {
+            "coef": 0.014372,
+            "se": 0.012219,
+            "pvalue": 0.244855
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.073008,
+            "se": 0.025187,
+            "pvalue": 0.005476
+          },
+          "attacker_capability_z": {
+            "coef": -0.021579,
+            "se": 0.032409,
+            "pvalue": 0.508457
+          },
+          "defender_capability_z": {
+            "coef": -0.164079,
+            "se": 0.037279,
+            "pvalue": 5.4e-05
+          },
+          "context_document_word_count_z": {
+            "coef": -0.036411,
+            "se": 0.023528,
+            "pvalue": 0.127784
+          },
+          "__domain_digital_information_systems": {
+            "coef": -0.220265,
+            "se": 0.06565,
+            "pvalue": 0.001487
+          },
+          "__domain_finance_markets": {
+            "coef": -0.068156,
+            "se": 0.088092,
+            "pvalue": 0.442619
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.02168,
+            "se": 0.068252,
+            "pvalue": 0.752027
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.148942,
+            "se": 0.071835,
+            "pvalue": 0.043107
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.037851,
+            "se": 0.063828,
+            "pvalue": 0.55574
+          },
+          "__attacker_glm46": {
+            "coef": 0.022968,
+            "se": 0.111075,
+            "pvalue": 0.83699
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.234276,
+            "se": 0.125709,
+            "pvalue": 0.068023
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.109977,
+            "se": 0.078422,
+            "pvalue": 0.166748
+          },
+          "__attacker_kimik2": {
+            "coef": 0.016725,
+            "se": 0.129244,
+            "pvalue": 0.897534
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -0.242904,
+            "se": 0.208045,
+            "pvalue": 0.248313
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.111727,
+            "se": 0.131784,
+            "pvalue": 0.400432
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.092561,
+            "se": 0.151966,
+            "pvalue": 0.545118
+          },
+          "__defender_glm46": {
+            "coef": 0.094309,
+            "se": 0.036083,
+            "pvalue": 0.011688
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.360017,
+            "se": 0.054792,
+            "pvalue": 0.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -0.148931,
+            "se": 0.063367,
+            "pvalue": 0.022588
+          },
+          "__defender_kimik2": {
+            "coef": -0.240349,
+            "se": 0.07909,
+            "pvalue": 0.00371
+          },
+          "__defender_mistralsmall32": {
+            "coef": -0.441135,
+            "se": 0.059139,
+            "pvalue": 0.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.027267,
+            "se": 0.060806,
+            "pvalue": 0.655703
+          },
+          "__defender_qwen8b": {
+            "coef": 0.033379,
+            "se": 0.058841,
+            "pvalue": 0.572973
+          },
+          "imr": {
+            "coef": -0.001147,
+            "se": 0.028695,
+            "pvalue": 0.968277
+          }
+        },
+        "llf": -204.920743,
+        "aic": 457.841485,
+        "bic": 559.13565,
+        "r2": 0.335721
+      },
+      "imr_summary": {
+        "n": 2968,
+        "mean": 1.509285,
+        "sd": 1.747205,
+        "min": 0.0,
+        "max": 5.774467
+      }
+    },
+    "two_stage_residual_inclusion": {
+      "status": "ok",
+      "stage1_selection": {
+        "status": "ok",
+        "model": "probit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -0.995623,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -2.995986,
+            "se": 0.156822,
+            "pvalue": 0.0
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": -14.26338,
+            "se": 50452686829.761795,
+            "pvalue": 1.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.12329,
+            "se": 0.061647,
+            "pvalue": 0.045509
+          },
+          "attacker_capability_z": {
+            "coef": -0.18246,
+            "se": 5968606.80678,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.052408,
+            "se": 2864684.425892,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 0.290365,
+            "se": 0.060718,
+            "pvalue": 2e-06
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.243332,
+            "se": 0.154323,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -0.753247,
+            "se": 0.177538,
+            "pvalue": 2.2e-05
+          },
+          "__domain_governance_law_history": {
+            "coef": 0.003774,
+            "se": 0.162074,
+            "pvalue": 0.981423
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.548989,
+            "se": 0.17128,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -1.15478,
+            "se": 0.16811,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.689243,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.549038,
+            "se": 9283663.261197,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.434889,
+            "se": 4680741.210054,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 1.205759,
+            "se": 2368615.265942,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 2.863885,
+            "se": 14370751.080388,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": 4.085641,
+            "se": 3298806.096153,
+            "pvalue": 0.999999
+          },
+          "__attacker_qwen8b": {
+            "coef": 2.448414,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": -0.107186,
+            "se": 1983499.439859,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.005407,
+            "se": 3850322.442079,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.142086,
+            "se": 2936357.013909,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -0.017334,
+            "se": 2255744.461016,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.088883,
+            "se": 5931052.246637,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.110787,
+            "se": 1750146.564581,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.19792,
+            "se": 388921.458796,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -438.522268,
+        "aic": 929.044537,
+        "bic": 1084.93127
+      },
+      "stage2_binary_outcome": {
+        "status": "ok",
+        "model": "logit",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 4.38391,
+            "se": 1737659730007875.5,
+            "pvalue": 1.0
+          },
+          "mtd_z": {
+            "coef": 5.363411,
+            "se": 2.331811788533756e+16,
+            "pvalue": 1.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.574787,
+            "se": 0.265194,
+            "pvalue": 0.030203
+          },
+          "attacker_capability_z": {
+            "coef": 0.056296,
+            "se": 627961933409.5309,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": -1.011665,
+            "se": 28114840.298704,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": -0.350939,
+            "se": 0.20043,
+            "pvalue": 0.079959
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.530576,
+            "se": 0.436655,
+            "pvalue": 0.000456
+          },
+          "__domain_finance_markets": {
+            "coef": -0.520573,
+            "se": 0.705709,
+            "pvalue": 0.460721
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.03422,
+            "se": 0.618954,
+            "pvalue": 0.95591
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.95639,
+            "se": 0.502675,
+            "pvalue": 0.057093
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.342531,
+            "se": 0.483672,
+            "pvalue": 0.478828
+          },
+          "__attacker_glm46": {
+            "coef": 0.081604,
+            "se": 434799076591.8809,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss120b": {
+            "coef": -2.06525,
+            "se": 844021736921.0511,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 1.155293,
+            "se": 643673142815.9758,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 0.429998,
+            "se": 494477381234.29596,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -1.479628,
+            "se": 1300134493741.941,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": -1.113235,
+            "se": 383646244058.0218,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.769864,
+            "se": 85254720904.31279,
+            "pvalue": 1.0
+          },
+          "__defender_glm46": {
+            "coef": 0.385969,
+            "se": 18981405.774065,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": -2.384895,
+            "se": 31598001.811212,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -1.292814,
+            "se": 25032785.210996,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -1.806338,
+            "se": 13149641.488108,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": -3.076866,
+            "se": 52825272.228625,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.60053,
+            "se": 7229722.620669,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.695322,
+            "se": 1477875.418422,
+            "pvalue": 1.0
+          },
+          "selection_residual": {
+            "coef": -0.141972,
+            "se": 0.540364,
+            "pvalue": 0.792756
+          }
+        },
+        "llf": -199.081451,
+        "aic": 450.162902,
+        "bic": 559.898247
+      },
+      "note": "2SRI residual-inclusion robustness for binary deception_success among engaged rows."
+    },
+    "ipw_outcome_model": {
+      "status": "ok",
+      "model": "ipw_weighted_ols",
+      "n_obs": 503,
+      "coefficients": {
+        "const": {
+          "coef": 1.118762,
+          "se": 0.109696,
+          "pvalue": 0.0
+        },
+        "mtd_z": {
+          "coef": 0.007802,
+          "se": 0.005128,
+          "pvalue": 0.134184
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.060296,
+          "se": 0.027459,
+          "pvalue": 0.032587
+        },
+        "attacker_capability_z": {
+          "coef": -0.041151,
+          "se": 0.033368,
+          "pvalue": 0.223028
+        },
+        "defender_capability_z": {
+          "coef": -0.152718,
+          "se": 0.03897,
+          "pvalue": 0.000261
+        },
+        "context_document_word_count_z": {
+          "coef": -0.022745,
+          "se": 0.023728,
+          "pvalue": 0.342211
+        },
+        "__domain_digital_information_systems": {
+          "coef": -0.109543,
+          "se": 0.059335,
+          "pvalue": 0.070563
+        },
+        "__domain_finance_markets": {
+          "coef": -0.07698,
+          "se": 0.101539,
+          "pvalue": 0.451793
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.018055,
+          "se": 0.059605,
+          "pvalue": 0.763162
+        },
+        "__domain_health_biomedicine": {
+          "coef": -0.063432,
+          "se": 0.060212,
+          "pvalue": 0.296988
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": 0.029974,
+          "se": 0.05231,
+          "pvalue": 0.569114
+        },
+        "__attacker_glm46": {
+          "coef": -0.069266,
+          "se": 0.099823,
+          "pvalue": 0.490845
+        },
+        "__attacker_gptoss120b": {
+          "coef": -0.223314,
+          "se": 0.115879,
+          "pvalue": 0.059435
+        },
+        "__attacker_gptoss20b": {
+          "coef": -0.048139,
+          "se": 0.095077,
+          "pvalue": 0.614777
+        },
+        "__attacker_kimik2": {
+          "coef": -0.091596,
+          "se": 0.095294,
+          "pvalue": 0.340901
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -0.4251,
+          "se": 0.18277,
+          "pvalue": 0.023959
+        },
+        "__attacker_qwen32b": {
+          "coef": -0.268618,
+          "se": 0.115062,
+          "pvalue": 0.023464
+        },
+        "__attacker_qwen8b": {
+          "coef": -0.2031,
+          "se": 0.133245,
+          "pvalue": 0.133504
+        },
+        "__defender_glm46": {
+          "coef": 0.11166,
+          "se": 0.045974,
+          "pvalue": 0.018644
+        },
+        "__defender_gptoss120b": {
+          "coef": -0.375403,
+          "se": 0.062255,
+          "pvalue": 0.0
+        },
+        "__defender_gptoss20b": {
+          "coef": -0.038469,
+          "se": 0.058789,
+          "pvalue": 0.515765
+        },
+        "__defender_kimik2": {
+          "coef": -0.224203,
+          "se": 0.079804,
+          "pvalue": 0.006977
+        },
+        "__defender_mistralsmall32": {
+          "coef": -0.39854,
+          "se": 0.070866,
+          "pvalue": 1e-06
+        },
+        "__defender_qwen32b": {
+          "coef": -0.028656,
+          "se": 0.052857,
+          "pvalue": 0.590037
+        },
+        "__defender_qwen8b": {
+          "coef": 0.014374,
+          "se": 0.050283,
+          "pvalue": 0.776126
+        }
+      },
+      "llf": -239.587317,
+      "aic": 525.174634,
+      "bic": 622.248208,
+      "r2": 0.374548
+    },
+    "aipw_style_weighted_glm": {
+      "status": "ok",
+      "model": "aipw_style_outcome_model",
+      "n_obs": 503,
+      "coefficients": {
+        "const": {
+          "coef": 1.048074,
+          "se": 0.117709,
+          "pvalue": 0.0
+        },
+        "mtd_z": {
+          "coef": 0.014238,
+          "se": 0.010825,
+          "pvalue": 0.194189
+        },
+        "ScenarioComplexity_z": {
+          "coef": 0.072953,
+          "se": 0.025328,
+          "pvalue": 0.005758
+        },
+        "attacker_capability_z": {
+          "coef": -0.021659,
+          "se": 0.03271,
+          "pvalue": 0.510784
+        },
+        "defender_capability_z": {
+          "coef": -0.163987,
+          "se": 0.036606,
+          "pvalue": 4.1e-05
+        },
+        "context_document_word_count_z": {
+          "coef": -0.036229,
+          "se": 0.022642,
+          "pvalue": 0.115631
+        },
+        "__domain_digital_information_systems": {
+          "coef": -0.220699,
+          "se": 0.064943,
+          "pvalue": 0.001308
+        },
+        "__domain_finance_markets": {
+          "coef": -0.068447,
+          "se": 0.090692,
+          "pvalue": 0.453822
+        },
+        "__domain_governance_law_history": {
+          "coef": -0.022012,
+          "se": 0.06716,
+          "pvalue": 0.744412
+        },
+        "__domain_health_biomedicine": {
+          "coef": -0.149353,
+          "se": 0.06934,
+          "pvalue": 0.035903
+        },
+        "__domain_physical_infrastructure_environment": {
+          "coef": -0.038114,
+          "se": 0.062413,
+          "pvalue": 0.544082
+        },
+        "__attacker_glm46": {
+          "coef": 0.023885,
+          "se": 0.105748,
+          "pvalue": 0.822193
+        },
+        "__attacker_gptoss120b": {
+          "coef": -0.234009,
+          "se": 0.12365,
+          "pvalue": 0.063996
+        },
+        "__attacker_gptoss20b": {
+          "coef": 0.110003,
+          "se": 0.078131,
+          "pvalue": 0.165102
+        },
+        "__attacker_kimik2": {
+          "coef": 0.017405,
+          "se": 0.126738,
+          "pvalue": 0.891297
+        },
+        "__attacker_mistralsmall32": {
+          "coef": -0.241507,
+          "se": 0.196944,
+          "pvalue": 0.225619
+        },
+        "__attacker_qwen32b": {
+          "coef": -0.110185,
+          "se": 0.11756,
+          "pvalue": 0.352954
+        },
+        "__attacker_qwen8b": {
+          "coef": -0.09146,
+          "se": 0.143604,
+          "pvalue": 0.526992
+        },
+        "__defender_glm46": {
+          "coef": 0.094418,
+          "se": 0.036024,
+          "pvalue": 0.01147
+        },
+        "__defender_gptoss120b": {
+          "coef": -0.359982,
+          "se": 0.054852,
+          "pvalue": 0.0
+        },
+        "__defender_gptoss20b": {
+          "coef": -0.148911,
+          "se": 0.063255,
+          "pvalue": 0.02238
+        },
+        "__defender_kimik2": {
+          "coef": -0.240298,
+          "se": 0.07899,
+          "pvalue": 0.003677
+        },
+        "__defender_mistralsmall32": {
+          "coef": -0.440848,
+          "se": 0.058023,
+          "pvalue": 0.0
+        },
+        "__defender_qwen32b": {
+          "coef": -0.027174,
+          "se": 0.059691,
+          "pvalue": 0.650825
+        },
+        "__defender_qwen8b": {
+          "coef": 0.033469,
+          "se": 0.058709,
+          "pvalue": 0.571074
+        }
+      },
+      "llf": -204.921133,
+      "aic": 455.842265,
+      "bic": 552.915839,
+      "r2": 0.33572,
+      "note": "AIPW-style robustness: outcome regression with selection-probability diagnostics. MTD is not randomized, so this is not a treatment-effect AIPW estimator.",
+      "selection_probability_summary": {
+        "n": 2968,
+        "mean": 0.171582,
+        "sd": 0.308285,
+        "min": 0.0,
+        "max": 0.999974
+      }
+    },
+    "sample_selection_biprobit_fiml": {
+      "status": "warning",
+      "model": "sample_selection_biprobit_fiml",
+      "optimizer_success": false,
+      "optimizer_message": "Desired error not necessarily achieved due to precision loss.",
+      "n_obs": 2968,
+      "selected_obs": 506,
+      "selection_columns": [
+        "const",
+        "gate_iv_safety_short_gate",
+        "gate_iv_safety_policy_gate",
+        "ScenarioComplexity_z",
+        "attacker_capability_z",
+        "defender_capability_z"
+      ],
+      "outcome_columns": [
+        "const",
+        "mtd_z",
+        "ScenarioComplexity_z",
+        "attacker_capability_z",
+        "defender_capability_z"
+      ],
+      "outcome_coefficients": {
+        "const": 5.138501,
+        "mtd_z": 56.80905,
+        "ScenarioComplexity_z": 0.264467,
+        "attacker_capability_z": 0.125652,
+        "defender_capability_z": -0.642525
+      },
+      "rho": -0.13385,
+      "negative_log_likelihood": 1047.838353,
+      "note": "Reduced-control bivariate probit FIML to keep optimization stable."
+    },
+    "heckman_twostep_gate_joint": {
+      "status": "ok",
+      "stage1_selection": {
+        "status": "ok",
+        "model": "probit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -0.995623,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -2.995986,
+            "se": 0.156822,
+            "pvalue": 0.0
+          },
+          "gate_iv_safety_policy_gate": {
+            "coef": -14.26338,
+            "se": 50452686829.761795,
+            "pvalue": 1.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.12329,
+            "se": 0.061647,
+            "pvalue": 0.045509
+          },
+          "attacker_capability_z": {
+            "coef": -0.18246,
+            "se": 5968606.80678,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.052408,
+            "se": 2864684.425892,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 0.290365,
+            "se": 0.060718,
+            "pvalue": 2e-06
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.243332,
+            "se": 0.154323,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -0.753247,
+            "se": 0.177538,
+            "pvalue": 2.2e-05
+          },
+          "__domain_governance_law_history": {
+            "coef": 0.003774,
+            "se": 0.162074,
+            "pvalue": 0.981423
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.548989,
+            "se": 0.17128,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -1.15478,
+            "se": 0.16811,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.689243,
+            "se": null,
+            "pvalue": null
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.549038,
+            "se": 9283663.261197,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.434889,
+            "se": 4680741.210054,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 1.205759,
+            "se": 2368615.265942,
+            "pvalue": 1.0
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 2.863885,
+            "se": 14370751.080388,
+            "pvalue": 1.0
+          },
+          "__attacker_qwen32b": {
+            "coef": 4.085641,
+            "se": 3298806.096153,
+            "pvalue": 0.999999
+          },
+          "__attacker_qwen8b": {
+            "coef": 2.448414,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_glm46": {
+            "coef": -0.107186,
+            "se": 1983499.439859,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.005407,
+            "se": 3850322.442079,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.142086,
+            "se": 2936357.013909,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -0.017334,
+            "se": 2255744.461016,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.088883,
+            "se": 5931052.246637,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.110787,
+            "se": 1750146.564581,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.19792,
+            "se": 388921.458796,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -438.522268,
+        "aic": 929.044537,
+        "bic": 1084.93127
+      },
+      "stage2_outcome": {
+        "status": "ok",
+        "model": "heckman_twostep_outcome",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 1.049709,
+            "se": 0.13441,
+            "pvalue": 0.0
+          },
+          "mtd_z": {
+            "coef": 0.014372,
+            "se": 0.012219,
+            "pvalue": 0.244855
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.073008,
+            "se": 0.025187,
+            "pvalue": 0.005476
+          },
+          "attacker_capability_z": {
+            "coef": -0.021579,
+            "se": 0.032409,
+            "pvalue": 0.508457
+          },
+          "defender_capability_z": {
+            "coef": -0.164079,
+            "se": 0.037279,
+            "pvalue": 5.4e-05
+          },
+          "context_document_word_count_z": {
+            "coef": -0.036411,
+            "se": 0.023528,
+            "pvalue": 0.127784
+          },
+          "__domain_digital_information_systems": {
+            "coef": -0.220265,
+            "se": 0.06565,
+            "pvalue": 0.001487
+          },
+          "__domain_finance_markets": {
+            "coef": -0.068156,
+            "se": 0.088092,
+            "pvalue": 0.442619
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.02168,
+            "se": 0.068252,
+            "pvalue": 0.752027
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.148942,
+            "se": 0.071835,
+            "pvalue": 0.043107
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.037851,
+            "se": 0.063828,
+            "pvalue": 0.55574
+          },
+          "__attacker_glm46": {
+            "coef": 0.022968,
+            "se": 0.111075,
+            "pvalue": 0.83699
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.234276,
+            "se": 0.125709,
+            "pvalue": 0.068023
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.109977,
+            "se": 0.078422,
+            "pvalue": 0.166748
+          },
+          "__attacker_kimik2": {
+            "coef": 0.016725,
+            "se": 0.129244,
+            "pvalue": 0.897534
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -0.242904,
+            "se": 0.208045,
+            "pvalue": 0.248313
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.111727,
+            "se": 0.131784,
+            "pvalue": 0.400432
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.092561,
+            "se": 0.151966,
+            "pvalue": 0.545118
+          },
+          "__defender_glm46": {
+            "coef": 0.094309,
+            "se": 0.036083,
+            "pvalue": 0.011688
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.360017,
+            "se": 0.054792,
+            "pvalue": 0.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -0.148931,
+            "se": 0.063367,
+            "pvalue": 0.022588
+          },
+          "__defender_kimik2": {
+            "coef": -0.240349,
+            "se": 0.07909,
+            "pvalue": 0.00371
+          },
+          "__defender_mistralsmall32": {
+            "coef": -0.441135,
+            "se": 0.059139,
+            "pvalue": 0.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.027267,
+            "se": 0.060806,
+            "pvalue": 0.655703
+          },
+          "__defender_qwen8b": {
+            "coef": 0.033379,
+            "se": 0.058841,
+            "pvalue": 0.572973
+          },
+          "imr": {
+            "coef": -0.001147,
+            "se": 0.028695,
+            "pvalue": 0.968277
+          }
+        },
+        "llf": -204.920743,
+        "aic": 457.841485,
+        "bic": 559.13565,
+        "r2": 0.335721
+      },
+      "imr_summary": {
+        "n": 2968,
+        "mean": 1.509285,
+        "sd": 1.747205,
+        "min": 0.0,
+        "max": 5.774467
+      }
+    },
+    "heckman_twostep_gate_any_safety_vs_standard": {
+      "status": "ok",
+      "stage1_selection": {
+        "status": "ok",
+        "model": "probit",
+        "n_obs": 2968,
+        "coefficients": {
+          "const": {
+            "coef": -0.986933,
+            "se": 1830409.121816,
+            "pvalue": 1.0
+          },
+          "gate_iv_any_safety": {
+            "coef": -3.327063,
+            "se": 0.146933,
+            "pvalue": 0.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.122795,
+            "se": 0.058358,
+            "pvalue": 0.035364
+          },
+          "attacker_capability_z": {
+            "coef": -0.168122,
+            "se": 1833814.555438,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.036232,
+            "se": 5877841.691944,
+            "pvalue": 1.0
+          },
+          "context_document_word_count_z": {
+            "coef": 0.255696,
+            "se": 0.056829,
+            "pvalue": 7e-06
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.128526,
+            "se": 0.145414,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -0.657653,
+            "se": 0.165927,
+            "pvalue": 7.4e-05
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.023745,
+            "se": 0.147543,
+            "pvalue": 0.872142
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.435526,
+            "se": 0.161422,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -1.068927,
+            "se": 0.16156,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.605364,
+            "se": 1269728.040772,
+            "pvalue": 0.999999
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.536267,
+            "se": 2464766.196792,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.421016,
+            "se": 1879695.432907,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 1.161562,
+            "se": 1444004.438525,
+            "pvalue": 0.999999
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 2.709355,
+            "se": 3796735.80819,
+            "pvalue": 0.999999
+          },
+          "__attacker_qwen32b": {
+            "coef": 3.786118,
+            "se": 1120348.271269,
+            "pvalue": 0.999997
+          },
+          "__attacker_qwen8b": {
+            "coef": 2.41819,
+            "se": 248966.282504,
+            "pvalue": 0.999992
+          },
+          "__defender_glm46": {
+            "coef": -0.100795,
+            "se": 4069801.056679,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss120b": {
+            "coef": 0.034274,
+            "se": 7900202.051201,
+            "pvalue": 1.0
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.095576,
+            "se": 6024901.5643,
+            "pvalue": 1.0
+          },
+          "__defender_kimik2": {
+            "coef": -0.044249,
+            "se": 4628401.201714,
+            "pvalue": 1.0
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.088955,
+            "se": 12169503.159678,
+            "pvalue": 1.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.118607,
+            "se": 3591000.932364,
+            "pvalue": 1.0
+          },
+          "__defender_qwen8b": {
+            "coef": 0.180913,
+            "se": 798000.207192,
+            "pvalue": 1.0
+          }
+        },
+        "llf": -490.476149,
+        "aic": 1030.952299,
+        "bic": 1180.843389
+      },
+      "stage2_outcome": {
+        "status": "ok",
+        "model": "heckman_twostep_outcome",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 1.05269,
+            "se": 0.129901,
+            "pvalue": 0.0
+          },
+          "mtd_z": {
+            "coef": 0.014661,
+            "se": 0.012113,
+            "pvalue": 0.231605
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.073168,
+            "se": 0.025229,
+            "pvalue": 0.005454
+          },
+          "attacker_capability_z": {
+            "coef": -0.021422,
+            "se": 0.032515,
+            "pvalue": 0.512914
+          },
+          "defender_capability_z": {
+            "coef": -0.164227,
+            "se": 0.037058,
+            "pvalue": 4.9e-05
+          },
+          "context_document_word_count_z": {
+            "coef": -0.036774,
+            "se": 0.02338,
+            "pvalue": 0.121807
+          },
+          "__domain_digital_information_systems": {
+            "coef": -0.21957,
+            "se": 0.065729,
+            "pvalue": 0.001553
+          },
+          "__domain_finance_markets": {
+            "coef": -0.067649,
+            "se": 0.088289,
+            "pvalue": 0.447007
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.020777,
+            "se": 0.06821,
+            "pvalue": 0.761885
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.148351,
+            "se": 0.070866,
+            "pvalue": 0.041209
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.037575,
+            "se": 0.063186,
+            "pvalue": 0.554642
+          },
+          "__attacker_glm46": {
+            "coef": 0.021314,
+            "se": 0.108821,
+            "pvalue": 0.845478
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.234762,
+            "se": 0.12533,
+            "pvalue": 0.066674
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.109975,
+            "se": 0.078377,
+            "pvalue": 0.166513
+          },
+          "__attacker_kimik2": {
+            "coef": 0.015562,
+            "se": 0.128011,
+            "pvalue": 0.903713
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -0.245287,
+            "se": 0.204613,
+            "pvalue": 0.236045
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.114152,
+            "se": 0.126601,
+            "pvalue": 0.371392
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.094469,
+            "se": 0.149532,
+            "pvalue": 0.530308
+          },
+          "__defender_glm46": {
+            "coef": 0.094034,
+            "se": 0.036159,
+            "pvalue": 0.01209
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.360153,
+            "se": 0.054747,
+            "pvalue": 0.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -0.148881,
+            "se": 0.063296,
+            "pvalue": 0.022487
+          },
+          "__defender_kimik2": {
+            "coef": -0.240419,
+            "se": 0.07905,
+            "pvalue": 0.003685
+          },
+          "__defender_mistralsmall32": {
+            "coef": -0.441706,
+            "se": 0.058942,
+            "pvalue": 0.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.02747,
+            "se": 0.060737,
+            "pvalue": 0.65295
+          },
+          "__defender_qwen8b": {
+            "coef": 0.03331,
+            "se": 0.058788,
+            "pvalue": 0.573413
+          },
+          "imr": {
+            "coef": -0.003228,
+            "se": 0.024015,
+            "pvalue": 0.893587
+          }
+        },
+        "llf": -204.91658,
+        "aic": 457.833159,
+        "bic": 559.127323,
+        "r2": 0.335732
+      },
+      "imr_summary": {
+        "n": 2968,
+        "mean": 2.82088,
+        "sd": 1.716258,
+        "min": 0.000652,
+        "max": 5.78025
+      }
+    },
+    "heckman_twostep_gate_safety_short_vs_standard": {
+      "status": "ok",
+      "stage1_selection": {
+        "status": "ok",
+        "model": "probit",
+        "n_obs": 1955,
+        "coefficients": {
+          "const": {
+            "coef": -0.995623,
+            "se": null,
+            "pvalue": null
+          },
+          "gate_iv_safety_short_gate": {
+            "coef": -2.995986,
+            "se": 0.156822,
+            "pvalue": 0.0
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.12329,
+            "se": 0.061647,
+            "pvalue": 0.045509
+          },
+          "attacker_capability_z": {
+            "coef": -0.18246,
+            "se": 2099721.351553,
+            "pvalue": 1.0
+          },
+          "defender_capability_z": {
+            "coef": 0.052408,
+            "se": null,
+            "pvalue": null
+          },
+          "context_document_word_count_z": {
+            "coef": 0.290365,
+            "se": 0.060718,
+            "pvalue": 2e-06
+          },
+          "__domain_digital_information_systems": {
+            "coef": -1.243332,
+            "se": 0.154323,
+            "pvalue": 0.0
+          },
+          "__domain_finance_markets": {
+            "coef": -0.753247,
+            "se": 0.177538,
+            "pvalue": 2.2e-05
+          },
+          "__domain_governance_law_history": {
+            "coef": 0.003774,
+            "se": 0.162074,
+            "pvalue": 0.981423
+          },
+          "__domain_health_biomedicine": {
+            "coef": -1.548989,
+            "se": 0.17128,
+            "pvalue": 0.0
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -1.15478,
+            "se": 0.16811,
+            "pvalue": 0.0
+          },
+          "__attacker_glm46": {
+            "coef": 1.689242,
+            "se": 1453841.158566,
+            "pvalue": 0.999999
+          },
+          "__attacker_gptoss120b": {
+            "coef": 0.549038,
+            "se": 2822162.248981,
+            "pvalue": 1.0
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.434889,
+            "se": 2152255.048466,
+            "pvalue": 1.0
+          },
+          "__attacker_kimik2": {
+            "coef": 1.205759,
+            "se": 1653387.984252,
+            "pvalue": 0.999999
+          },
+          "__attacker_mistralsmall32": {
+            "coef": 2.863886,
+            "se": 4347270.131007,
+            "pvalue": 0.999999
+          },
+          "__attacker_qwen32b": {
+            "coef": 4.085641,
+            "se": 1282801.022264,
+            "pvalue": 0.999997
+          },
+          "__attacker_qwen8b": {
+            "coef": 2.448415,
+            "se": 285066.893837,
+            "pvalue": 0.999993
+          },
+          "__defender_glm46": {
+            "coef": -0.107187,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.005407,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_gptoss20b": {
+            "coef": 0.142086,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_kimik2": {
+            "coef": -0.017334,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_mistralsmall32": {
+            "coef": 0.088883,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen32b": {
+            "coef": -0.110787,
+            "se": null,
+            "pvalue": null
+          },
+          "__defender_qwen8b": {
+            "coef": 0.19792,
+            "se": null,
+            "pvalue": null
+          }
+        },
+        "llf": -438.522268,
+        "aic": 927.044537,
+        "bic": 1066.498173
+      },
+      "stage2_outcome": {
+        "status": "ok",
+        "model": "heckman_twostep_outcome",
+        "n_obs": 503,
+        "coefficients": {
+          "const": {
+            "coef": 1.049709,
+            "se": 0.13441,
+            "pvalue": 0.0
+          },
+          "mtd_z": {
+            "coef": 0.014372,
+            "se": 0.012219,
+            "pvalue": 0.244855
+          },
+          "ScenarioComplexity_z": {
+            "coef": 0.073008,
+            "se": 0.025187,
+            "pvalue": 0.005476
+          },
+          "attacker_capability_z": {
+            "coef": -0.021579,
+            "se": 0.032409,
+            "pvalue": 0.508457
+          },
+          "defender_capability_z": {
+            "coef": -0.164079,
+            "se": 0.037279,
+            "pvalue": 5.4e-05
+          },
+          "context_document_word_count_z": {
+            "coef": -0.036411,
+            "se": 0.023528,
+            "pvalue": 0.127784
+          },
+          "__domain_digital_information_systems": {
+            "coef": -0.220265,
+            "se": 0.06565,
+            "pvalue": 0.001487
+          },
+          "__domain_finance_markets": {
+            "coef": -0.068156,
+            "se": 0.088092,
+            "pvalue": 0.442619
+          },
+          "__domain_governance_law_history": {
+            "coef": -0.02168,
+            "se": 0.068252,
+            "pvalue": 0.752027
+          },
+          "__domain_health_biomedicine": {
+            "coef": -0.148942,
+            "se": 0.071835,
+            "pvalue": 0.043107
+          },
+          "__domain_physical_infrastructure_environment": {
+            "coef": -0.037851,
+            "se": 0.063828,
+            "pvalue": 0.55574
+          },
+          "__attacker_glm46": {
+            "coef": 0.022968,
+            "se": 0.111075,
+            "pvalue": 0.83699
+          },
+          "__attacker_gptoss120b": {
+            "coef": -0.234276,
+            "se": 0.125709,
+            "pvalue": 0.068023
+          },
+          "__attacker_gptoss20b": {
+            "coef": 0.109977,
+            "se": 0.078422,
+            "pvalue": 0.166748
+          },
+          "__attacker_kimik2": {
+            "coef": 0.016725,
+            "se": 0.129244,
+            "pvalue": 0.897534
+          },
+          "__attacker_mistralsmall32": {
+            "coef": -0.242904,
+            "se": 0.208045,
+            "pvalue": 0.248313
+          },
+          "__attacker_qwen32b": {
+            "coef": -0.111727,
+            "se": 0.131784,
+            "pvalue": 0.400432
+          },
+          "__attacker_qwen8b": {
+            "coef": -0.092561,
+            "se": 0.151966,
+            "pvalue": 0.545118
+          },
+          "__defender_glm46": {
+            "coef": 0.094309,
+            "se": 0.036083,
+            "pvalue": 0.011688
+          },
+          "__defender_gptoss120b": {
+            "coef": -0.360017,
+            "se": 0.054792,
+            "pvalue": 0.0
+          },
+          "__defender_gptoss20b": {
+            "coef": -0.148931,
+            "se": 0.063367,
+            "pvalue": 0.022588
+          },
+          "__defender_kimik2": {
+            "coef": -0.240349,
+            "se": 0.07909,
+            "pvalue": 0.00371
+          },
+          "__defender_mistralsmall32": {
+            "coef": -0.441135,
+            "se": 0.059139,
+            "pvalue": 0.0
+          },
+          "__defender_qwen32b": {
+            "coef": -0.027267,
+            "se": 0.060806,
+            "pvalue": 0.655703
+          },
+          "__defender_qwen8b": {
+            "coef": 0.033379,
+            "se": 0.058841,
+            "pvalue": 0.572973
+          },
+          "imr": {
+            "coef": -0.001147,
+            "se": 0.028695,
+            "pvalue": 0.968277
+          }
+        },
+        "llf": -204.920743,
+        "aic": 457.841485,
+        "bic": 559.13565,
+        "r2": 0.335721
+      },
+      "imr_summary": {
+        "n": 1955,
+        "mean": 2.291335,
+        "sd": 1.685964,
+        "min": 0.00011,
+        "max": 5.774467
+      }
+    },
+    "heckman_twostep_gate_safety_policy_vs_standard": {
+      "status": "error",
+      "stage": "selection",
+      "reason": "Probit fit failed: Singular matrix"
+    }
+  },
+  "partial_identification": {
+    "status": "ok",
+    "estimand": "overall target-shift deception success rate under worst/best-case outcomes for refused or missing rows",
+    "n": 2968,
+    "observed_selected_successes": 368.0,
+    "unobserved_or_refused_rows": 2462,
+    "eligible_unobserved_or_refused_rows": 2437,
+    "ineligible_baseline_target_unobserved_rows": 25,
+    "lower_bound": 0.123989,
+    "upper_bound": 0.945081
+  },
+  "notes": [
+    "Primary estimates are selection-adjusted under stated identification assumptions, not assumption-free corrections.",
+    "Selection-stage controls are pre-treatment only; MTD enters outcome models because it is observed after engagement."
+  ],
+  "sensitivity": {
+    "status": "ok",
+    "mtd_coefficient": 0.014372,
+    "direct_iv_coefficients_engaged_falsification": {
+      "gate_iv_safety_short_gate": -0.157396
+    },
+    "direct_effect_tipping_point_outcome_units": 0.014372,
+    "interpretation": "A direct IV effect on the outcome of approximately this magnitude, aligned against the MTD coefficient, would be needed to mechanically move the reported MTD coefficient to zero in this linear sensitivity summary."
+  },
+  "status": "ok"
+}

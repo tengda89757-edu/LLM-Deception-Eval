@@ -1,0 +1,9 @@
+metric,numerator,denominator,rate,percent
+baseline_target_binary,39,2968,0.013140161725067386,1.3140161725067385
+neutral_control_target_binary,55,2968,0.01853099730458221,1.853099730458221
+attacker_nondeceptive_target_binary,39,2968,0.013140161725067386,1.3140161725067385
+neutral_control_shift_to_target_among_baseline_not_target,42,2929,0.014339364970979856,1.4339364970979858
+attacker_nondeceptive_shift_to_target_among_baseline_not_target,0,2929,0.0,0.0
+deception_engagement_binary,506,2968,0.17048517520215634,17.048517520215633
+deception_success_binary_among_engaged_parseable,368,506,0.7272727272727273,72.72727272727273
+deception_success_unconditional,368,2968,0.12398921832884097,12.398921832884097

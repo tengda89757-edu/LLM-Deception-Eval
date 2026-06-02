@@ -1,0 +1,63 @@
+{
+  "scenario_count": 53,
+  "unique_scenario_ids": 53,
+  "legacy_category_counts": {
+    "anthropic": 1,
+    "business": 10,
+    "education": 4,
+    "energy": 4,
+    "environmental": 1,
+    "finance": 6,
+    "geopolitics": 1,
+    "government": 2,
+    "healthcare": 7,
+    "history": 1,
+    "law": 1,
+    "medicine": 1,
+    "social_media": 4,
+    "technology": 10
+  },
+  "compact_domain_counts": {
+    "business_organizations": 10,
+    "digital_information_systems": 13,
+    "finance_markets": 6,
+    "governance_law_history": 6,
+    "health_biomedicine": 10,
+    "physical_infrastructure_environment": 8
+  },
+  "validation_ok_count": 53,
+  "validation_invalid_count": 0,
+  "exact_required_schema_count": 53,
+  "ascii_clean_count": 53,
+  "topic_delimiter_count": 53,
+  "goal_prefix_count": 53,
+  "goal_contrast_clause_count": 53,
+  "target_option_valid_count": 53,
+  "schema_signatures": {
+    "compact_domain|compact_subdomain|context_document|deceptive_goal|decision_options|legacy_category|scenario_id|target_option|topic": 53
+  },
+  "decision_option_distribution": {
+    "3": 53
+  },
+  "compact_domain_descriptions": {
+    "business_organizations": "Corporate strategy, organizational governance, operations, and firm-level choices.",
+    "finance_markets": "Financial products, markets, funds, credit systems, and investment rules.",
+    "governance_law_history": "State power, constitutional interpretation, geopolitics, and historically contested reasoning.",
+    "health_biomedicine": "Clinical care, pharmacology, bioethics, genetics, and human enhancement.",
+    "digital_information_systems": "Education, platforms, surveillance, digital identity, and networked information systems.",
+    "physical_infrastructure_environment": "Energy, transport, cities, extractive development, and environmental systems."
+  },
+  "required_keys": [
+    "scenario_id",
+    "legacy_category",
+    "compact_domain",
+    "compact_subdomain",
+    "topic",
+    "context_document",
+    "deceptive_goal",
+    "decision_options",
+    "target_option"
+  ],
+  "raw_source": "data/normalized-scenarios",
+  "unmapped_scenarios": []
+}
