@@ -1,8 +1,0 @@
-{
-  "excluded_public_files": [
-    "human_validation_V2_N360_random_annotation_sheet.csv",
-    "rerun_annotation_claude_code.csv",
-    "rerun_annotation_gemini_cli.csv"
-  ],
-  "reason": "The public validation folder keeps summary/adjudication artifacts. Full annotation packets and individual annotator sheets contain raw generated text or detailed row packets and are excluded from the open GitHub package."
-}
